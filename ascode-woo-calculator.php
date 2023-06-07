@@ -94,11 +94,11 @@
      * @return void
      */
     public function init_plugin() {
-        // if( is_admin() ) {
-        //     new AsCode\PostManager\Admin();
-        // } else {
-        //     // for frontend
-        // }
+        if( is_admin() ) {
+            new AsCode\WooCalculator\Admin();
+        } else {
+            // for frontend
+        }
     }
 
  }
