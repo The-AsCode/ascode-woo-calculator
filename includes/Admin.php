@@ -14,5 +14,6 @@ class Admin {
      */
     public function load_admin_files() {
         new Admin\Menu();
+        new Admin\Enqueue();
     }
 }

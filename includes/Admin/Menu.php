@@ -22,6 +22,6 @@ class Menu {
     }
 
     public function plugin_page() {
-        echo '<div id="asc-pm-dashboard">Hello</div>';
+        echo '<div id="ascode-woo-calculator">Hello</div>';
     }
 }
