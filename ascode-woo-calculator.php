@@ -72,7 +72,7 @@
         define( 'ASCODE_WOO_CALCULATOR_FILE', __FILE__ );
         define( 'ASCODE_WOO_CALCULATOR_DIR_PATH', __DIR__ );
         define( 'ASCODE_WOO_CALCULATOR_URL', plugins_url( '', ASCODE_WOO_CALCULATOR_FILE ) );
-        // define( 'ASC_WOO_CALCULATOR_ASSETS', ASC_POST_MANAGER_URL . '/assets' );
+        define( 'ASC_WOO_CALCULATOR_ASSETS', ASCODE_WOO_CALCULATOR_URL . '/assets' );
     }
 
     /**
@@ -94,11 +94,11 @@
      * @return void
      */
     public function init_plugin() {
-        // if( is_admin() ) {
-        //     new AsCode\PostManager\Admin();
-        // } else {
-        //     // for frontend
-        // }
+        if( is_admin() ) {
+            new AsCode\WooCalculator\Admin();
+        } else {
+            // for frontend
+        }
     }
 
  }
