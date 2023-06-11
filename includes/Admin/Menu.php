@@ -22,6 +22,6 @@ class Menu {
     }
 
     public function plugin_page() {
-        echo '<div id="ascode-woo-calculator">Hello</div>';
+        echo '<div id="ascode-woo-calculator"></div>';
     }
 }
