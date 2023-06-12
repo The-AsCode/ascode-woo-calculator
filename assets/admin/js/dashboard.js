@@ -14,21 +14,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _CalculatorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CalculatorList */ "./assets/admin/src/dashboard/js/CalculatorList.js");
+/* harmony import */ var _components_dashboard_CalculatorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/dashboard/CalculatorList */ "./assets/admin/src/dashboard/js/components/dashboard/CalculatorList.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_CalculatorList__WEBPACK_IMPORTED_MODULE_1__["default"], {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_dashboard_CalculatorList__WEBPACK_IMPORTED_MODULE_1__["default"], {});
 }
 
 /***/ }),
 
-/***/ "./assets/admin/src/dashboard/js/CalculatorList.js":
-/*!*********************************************************!*\
-  !*** ./assets/admin/src/dashboard/js/CalculatorList.js ***!
-  \*********************************************************/
+/***/ "./assets/admin/src/dashboard/js/components/dashboard/CalculatorList.js":
+/*!******************************************************************************!*\
+  !*** ./assets/admin/src/dashboard/js/components/dashboard/CalculatorList.js ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -37,7 +37,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ListArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListArray.js */ "./assets/admin/src/dashboard/js/ListArray.js");
+/* harmony import */ var _ListArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListArray.js */ "./assets/admin/src/dashboard/js/components/dashboard/ListArray.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -134,10 +134,10 @@ var CalculatorList = function CalculatorList() {
 
 /***/ }),
 
-/***/ "./assets/admin/src/dashboard/js/ListArray.js":
-/*!****************************************************!*\
-  !*** ./assets/admin/src/dashboard/js/ListArray.js ***!
-  \****************************************************/
+/***/ "./assets/admin/src/dashboard/js/components/dashboard/ListArray.js":
+/*!*************************************************************************!*\
+  !*** ./assets/admin/src/dashboard/js/components/dashboard/ListArray.js ***!
+  \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
