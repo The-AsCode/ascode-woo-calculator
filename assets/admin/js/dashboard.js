@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var CalculatorList = function CalculatorList() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "px-4 sm:px-6 lg:px-8",
+    className: "px-4 sm:px-6 lg:px-8 ",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "sm:flex sm:items-center",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
