@@ -197,10 +197,10 @@ root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)
 
 /***/ }),
 
-/***/ "./assets/admin/src/dashboard/css/dashboard.css":
-/*!******************************************************!*\
-  !*** ./assets/admin/src/dashboard/css/dashboard.css ***!
-  \******************************************************/
+/***/ "./tailwind/input.css":
+/*!****************************!*\
+  !*** ./tailwind/input.css ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -35043,7 +35043,7 @@ if (false) {} else {
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/assets/admin/js/dashboard": 0,
-/******/ 			"assets/admin/css/dashboard": 0
+/******/ 			"assets/admin/css/output": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -35093,8 +35093,8 @@ if (false) {} else {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/admin/css/dashboard"], () => (__webpack_require__("./assets/admin/src/dashboard/js/index.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/admin/css/dashboard"], () => (__webpack_require__("./assets/admin/src/dashboard/css/dashboard.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/admin/css/output"], () => (__webpack_require__("./assets/admin/src/dashboard/js/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/admin/css/output"], () => (__webpack_require__("./tailwind/input.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

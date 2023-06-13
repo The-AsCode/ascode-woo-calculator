@@ -3,4 +3,4 @@ require('mix-tailwindcss');
 
 mix.js('assets/admin/src/dashboard/js/index.js', 'assets/admin/js/dashboard.js').react();
     
-mix.postCss('assets/admin/src/dashboard/css/dashboard.css', 'assets/admin/css/dashboard.css').tailwind('./tailwind.config.js');
+mix.postCss('./tailwind/input.css', 'assets/admin/css/output.css').tailwind('./tailwind.config.js');
