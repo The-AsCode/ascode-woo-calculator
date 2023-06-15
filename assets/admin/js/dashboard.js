@@ -16,13 +16,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_dashboard_CalculatorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/dashboard/CalculatorList */ "./assets/admin/src/dashboard/js/components/dashboard/CalculatorList.js");
 /* harmony import */ var _components_dashboard_AddNewCalculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/dashboard/AddNewCalculator */ "./assets/admin/src/dashboard/js/components/dashboard/AddNewCalculator.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_dashboard_new__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/dashboard/new */ "./assets/admin/src/dashboard/js/components/dashboard/new.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
 
 function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_dashboard_AddNewCalculator__WEBPACK_IMPORTED_MODULE_2__["default"], {});
+  return (
+    /*#__PURE__*/
+    // <AddNewCalculator />
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_dashboard_new__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+  );
 }
 
 /***/ }),
@@ -325,6 +331,78 @@ var data = [{
   shortcode: '[The-test-shortcode]'
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (data);
+
+/***/ }),
+
+/***/ "./assets/admin/src/dashboard/js/components/dashboard/new.js":
+/*!*******************************************************************!*\
+  !*** ./assets/admin/src/dashboard/js/components/dashboard/new.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ New)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function New() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "bg-white pt-4 rounded",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+      className: "max-w-3xl mx-auto border p-5 rounded",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "flex justify-between",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+            htmlFor: "email",
+            className: "block text-sm font-medium leading-6 text-gray-900",
+            children: "Name"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "text-sm leading-6 text-gray-500",
+            id: "email-optional",
+            children: "Required"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "mt-2",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+            type: "text",
+            name: "name",
+            id: "name",
+            className: "form-input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",
+            placeholder: "Put calculator name here",
+            "aria-describedby": ""
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "flex justify-between",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+            htmlFor: "description",
+            className: "block text-sm font-medium leading-6 text-gray-900",
+            children: "Description"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "text-sm leading-6 text-gray-500",
+            id: "email-optional",
+            children: "Optional"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "mt-2",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("textarea", {
+            // type="text"
+            name: "description",
+            id: "description",
+            className: "block w-full rounded-md border-0 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",
+            placeholder: "you can write something",
+            "aria-describedby": ""
+          })
+        })]
+      })]
+    })
+  });
+}
 
 /***/ }),
 
