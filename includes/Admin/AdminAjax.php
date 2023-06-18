@@ -56,10 +56,10 @@ class AdminAjax
         }
 
         $calculator_post_value = array(
-            // 'post_author'   => $user_id,
+            'post_author'   => $user_id,
             'post_title'    => $calculator_name,
             'post_content'  => $calculator_setting_value,
-            // 'post_type'     => 'ascode_woo_calculator',
+            'post_type'     => 'calculator',
             'post_status'   => 'publish',
         );
 
