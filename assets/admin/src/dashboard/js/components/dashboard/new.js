@@ -3,30 +3,66 @@ import { useState } from 'react';
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 
 export default function New() {
-    const [sections, setSections] = useState([{ name: '', value: 0 }]);
+    const [sections, setSections] = useState([
+        {
+            calculator: {
+                calculatorName: '',
+                description: '',
+                inputType: ''
+            },
+            fields: [
+                {
+                    name: '',
+                    value: 0
+                }
+            ]
+        }
+    ]);
+
+    const handleCalculatorNameChange = (event) => {
+        const updatedSections = [...sections];
+        updatedSections[0].calculator.calculatorName = event.target.value;
+        setSections(updatedSections);
+    };
+
+    const handleDescriptionChange = (event) => {
+        const updatedSections = [...sections];
+        updatedSections[0].calculator.description = event.target.value;
+        setSections(updatedSections);
+    };
+
+    const handleTypeChange = (event) => {
+        const updatedSections = [...sections];
+        updatedSections[0].calculator.type = event.target.value;
+        setSections(updatedSections);
+    };
 
     const handleNameChange = (index, event) => {
-        event.preventDefault();
         const updatedSections = [...sections];
-        updatedSections[index].name = event.target.value;
+        updatedSections[0].fields[index].name = event.target.value;
         setSections(updatedSections);
     };
 
     const handleValueChange = (index, event) => {
         const updatedSections = [...sections];
-        updatedSections[index].value = event.target.value;
+        updatedSections[0].fields[index].value = event.target.value;
         setSections(updatedSections);
     };
 
     const handleAddSection = (event) => {
         event.preventDefault();
-        setSections([...sections, { name: '', value: '' }]);
+        const updatedSections = [...sections];
+        updatedSections[0].fields.push({
+            name: '',
+            value: 0
+        });
+        setSections(updatedSections);
     };
 
     const handleRemoveSection = (index, event) => {
         event.preventDefault();
         const updatedSections = [...sections];
-        updatedSections.splice(index, 1);
+        updatedSections[0].fields.splice(index, 1);
         setSections(updatedSections);
     };
 
@@ -59,6 +95,8 @@ export default function New() {
                                 className="form-input block w-full rounded-md border-0 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 placeholder="Put calculator name here"
                                 aria-describedby=""
+                                value={sections[0].calculator.calculatorName}
+                                onChange={handleCalculatorNameChange}
                             />
                         </div>
                     </div>
@@ -79,6 +117,8 @@ export default function New() {
                                 className="block w-full rounded-md border-0 p-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 placeholder="you can write something"
                                 aria-describedby=""
+                                value={sections[0].calculator.description}
+                                onChange={handleDescriptionChange}
                             />
                         </div>
                     </div>
@@ -89,7 +129,7 @@ export default function New() {
                             </label>
                         </div>
                         <div className="mt-2">
-                            {sections.map((section, index) => (
+                            {sections[0].fields.map((field, index) => (
                                 <div key={index} className='flex mt-4'>
                                     <div className="relative mr-2">
                                         <label
@@ -103,8 +143,8 @@ export default function New() {
                                             name="name"
                                             id="name"
                                             className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Jane Smith"
-                                            value={section.name}
+                                            // placeholder={`Input ${index + 1} Name`}
+                                            value={field.name}
                                             onChange={(event) => handleNameChange(index, event)}
                                         />
                                     </div>
@@ -120,8 +160,8 @@ export default function New() {
                                             name="value"
                                             id="value"
                                             className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder=""
-                                            value={section.value}
+                                            // placeholder={`Input ${index + 1} Value`}
+                                            value={field.value}
                                             onChange={(event) => handleValueChange(index, event)}
                                         />
                                     </div>
@@ -132,7 +172,7 @@ export default function New() {
                                 </div>
                             ))}
                             <button
-                                onClick={handleAddSection}
+                                onClick={() => handleAddSection(event)}
                                 className="rounded-md bg-indigo-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >Add Field</button>
                         </div>

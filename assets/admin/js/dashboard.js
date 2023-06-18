@@ -364,34 +364,57 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function New() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-      name: '',
-      value: 0
+      calculator: {
+        calculatorName: '',
+        description: '',
+        inputType: ''
+      },
+      fields: [{
+        name: '',
+        value: 0
+      }]
     }]),
     _useState2 = _slicedToArray(_useState, 2),
     sections = _useState2[0],
     setSections = _useState2[1];
-  var handleNameChange = function handleNameChange(index, event) {
-    event.preventDefault();
+  var handleCalculatorNameChange = function handleCalculatorNameChange(event) {
     var updatedSections = _toConsumableArray(sections);
-    updatedSections[index].name = event.target.value;
+    updatedSections[0].calculator.calculatorName = event.target.value;
+    setSections(updatedSections);
+  };
+  var handleDescriptionChange = function handleDescriptionChange(event) {
+    var updatedSections = _toConsumableArray(sections);
+    updatedSections[0].calculator.description = event.target.value;
+    setSections(updatedSections);
+  };
+  var handleTypeChange = function handleTypeChange(event) {
+    var updatedSections = _toConsumableArray(sections);
+    updatedSections[0].calculator.type = event.target.value;
+    setSections(updatedSections);
+  };
+  var handleNameChange = function handleNameChange(index, event) {
+    var updatedSections = _toConsumableArray(sections);
+    updatedSections[0].fields[index].name = event.target.value;
     setSections(updatedSections);
   };
   var handleValueChange = function handleValueChange(index, event) {
     var updatedSections = _toConsumableArray(sections);
-    updatedSections[index].value = event.target.value;
+    updatedSections[0].fields[index].value = event.target.value;
     setSections(updatedSections);
   };
   var handleAddSection = function handleAddSection(event) {
     event.preventDefault();
-    setSections([].concat(_toConsumableArray(sections), [{
+    var updatedSections = _toConsumableArray(sections);
+    updatedSections[0].fields.push({
       name: '',
-      value: ''
-    }]));
+      value: 0
+    });
+    setSections(updatedSections);
   };
   var handleRemoveSection = function handleRemoveSection(index, event) {
     event.preventDefault();
     var updatedSections = _toConsumableArray(sections);
-    updatedSections.splice(index, 1);
+    updatedSections[0].fields.splice(index, 1);
     setSections(updatedSections);
   };
   var handleSave = function handleSave() {
@@ -430,7 +453,9 @@ function New() {
               id: "name",
               className: "form-input block w-full rounded-md border-0 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",
               placeholder: "Put calculator name here",
-              "aria-describedby": ""
+              "aria-describedby": "",
+              value: sections[0].calculator.calculatorName,
+              onChange: handleCalculatorNameChange
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -454,7 +479,9 @@ function New() {
               id: "description",
               className: "block w-full rounded-md border-0 p-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",
               placeholder: "you can write something",
-              "aria-describedby": ""
+              "aria-describedby": "",
+              value: sections[0].calculator.description,
+              onChange: handleDescriptionChange
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -468,7 +495,7 @@ function New() {
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "mt-2",
-            children: [sections.map(function (section, index) {
+            children: [sections[0].fields.map(function (field, index) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                 className: "flex mt-4",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -481,9 +508,10 @@ function New() {
                     type: "text",
                     name: "name",
                     id: "name",
-                    className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",
-                    placeholder: "Jane Smith",
-                    value: section.name,
+                    className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    // placeholder={`Input ${index + 1} Name`}
+                    ,
+                    value: field.name,
                     onChange: function onChange(event) {
                       return handleNameChange(index, event);
                     }
@@ -498,9 +526,10 @@ function New() {
                     type: "text",
                     name: "value",
                     id: "value",
-                    className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",
-                    placeholder: "",
-                    value: section.value,
+                    className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    // placeholder={`Input ${index + 1} Value`}
+                    ,
+                    value: field.value,
                     onChange: function onChange(event) {
                       return handleValueChange(index, event);
                     }
@@ -514,7 +543,9 @@ function New() {
                 })]
               }, index);
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-              onClick: handleAddSection,
+              onClick: function onClick() {
+                return handleAddSection(event);
+              },
               className: "rounded-md bg-indigo-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
               children: "Add Field"
             })]
