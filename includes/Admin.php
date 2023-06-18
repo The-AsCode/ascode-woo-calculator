@@ -2,8 +2,10 @@
 
 namespace AsCode\WooCalculator;
 
-class Admin {
-    public function __construct() {
+class Admin
+{
+    public function __construct()
+    {
         $this->load_admin_files();
     }
 
@@ -12,8 +14,10 @@ class Admin {
      *
      * @return void
      */
-    public function load_admin_files() {
+    public function load_admin_files()
+    {
         new Admin\Menu();
         new Admin\Enqueue();
+        new Admin\AdminAjax();
     }
 }

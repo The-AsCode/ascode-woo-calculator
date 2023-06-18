@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid';
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 export default function New() {
     const [sections, setSections] = useState([
@@ -70,7 +70,15 @@ export default function New() {
     };
 
     const handleSave = () => {
-        console.log(sections);
+        let data = {
+            'action': 'ascode_save_calculator_info_action',
+            'calculatorInfo': sections,
+            '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+        };
+
+        jQuery.post(ajaxurl, data, (response) => {
+            console.log(response);
+        });
     }
     return (
         <div className='bg-white p-6 rounded'>
@@ -170,8 +178,8 @@ export default function New() {
                                     </div>
                                     <button
                                         onClick={() => handleRemoveSection(index, event)}
-                                        className="rounded bg-red-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                    >Remove</button>
+                                        className="rounded-2xl bg-red-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    ><TrashIcon className="h-6 w-6 text-red-500" /></button>
                                 </div>
                             ))}
                             <button
