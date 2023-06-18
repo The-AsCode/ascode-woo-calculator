@@ -429,6 +429,7 @@ function New() {
       '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
     };
     jQuery.post(ajaxurl, data, function (response) {
+      // alert('Saved!');
       console.log(response);
     });
   };
