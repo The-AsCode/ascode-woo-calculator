@@ -371,7 +371,7 @@ function New() {
       },
       fields: [{
         name: '',
-        value: 0
+        value: ''
       }]
     }]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -407,12 +407,16 @@ function New() {
     var updatedSections = _toConsumableArray(sections);
     updatedSections[0].fields.push({
       name: '',
-      value: 0
+      value: ''
     });
     setSections(updatedSections);
   };
   var handleRemoveSection = function handleRemoveSection(index, event) {
     event.preventDefault();
+    if (index === 0 && sections[0].fields.length === 1) {
+      return; // Prevent removing the first field if it's the only one
+    }
+
     var updatedSections = _toConsumableArray(sections);
     updatedSections[0].fields.splice(index, 1);
     setSections(updatedSections);

@@ -13,7 +13,7 @@ export default function New() {
             fields: [
                 {
                     name: '',
-                    value: 0
+                    value: ''
                 }
             ]
         }
@@ -54,13 +54,16 @@ export default function New() {
         const updatedSections = [...sections];
         updatedSections[0].fields.push({
             name: '',
-            value: 0
+            value: ''
         });
         setSections(updatedSections);
     };
 
     const handleRemoveSection = (index, event) => {
         event.preventDefault();
+        if (index === 0 && sections[0].fields.length === 1) {
+            return; // Prevent removing the first field if it's the only one
+        }
         const updatedSections = [...sections];
         updatedSections[0].fields.splice(index, 1);
         setSections(updatedSections);
