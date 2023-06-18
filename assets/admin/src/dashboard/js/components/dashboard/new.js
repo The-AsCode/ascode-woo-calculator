@@ -77,8 +77,8 @@ export default function New() {
         };
 
         jQuery.post(ajaxurl, data, (response) => {
-            // alert('Saved!');
-            console.log(response);
+            console.log(response.data.message);
+            alert(response.data.message);
         });
     }
     return (

@@ -429,8 +429,8 @@ function New() {
       '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
     };
     jQuery.post(ajaxurl, data, function (response) {
-      // alert('Saved!');
-      console.log(response);
+      console.log(response.data.message);
+      alert(response.data.message);
     });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
