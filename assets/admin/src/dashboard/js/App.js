@@ -6,6 +6,7 @@ import New from "./components/dashboard/new";
 export default function App() {
   return (
     // <AddNewCalculator />
-      <New />
+      // <New />
+    <CalculatorList />
   )
 }
