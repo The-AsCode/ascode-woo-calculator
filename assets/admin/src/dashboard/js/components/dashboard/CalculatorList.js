@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import data from './ListArray.js';
 
 const CalculatorList = () => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let data = {
+      'action': 'ascode_load_calculator_info_action',
+      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+    };
+
+    jQuery.post(ajaxurl, data, (response) => {
+      console.log(response.data);
+      setData(response.data);
+      // alert(response.data.message);
+    });
+
+  }, []);
+
   return (
     // <div className='m-2 p-2	border border-gray-600 rounded'>
     <div className='bg-white p-6 rounded'>
@@ -47,7 +63,7 @@ const CalculatorList = () => {
                             // onClick={() => handleRemoveSection(index, event)}
                             className="rounded-2xl bg-blue-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                           >
-                            <PencilIcon class="h-5 w-5 text-blue-500" />
+                            <PencilIcon className="h-5 w-5 text-blue-500" />
                           </button>
                         </td>
                       </tr>

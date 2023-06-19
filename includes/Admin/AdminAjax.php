@@ -13,6 +13,7 @@ class AdminAjax
     function __construct()
     {
         add_action('wp_ajax_ascode_save_calculator_info_action', [$this, 'ascode_save_calculator_info_action']);
+        add_action('wp_ajax_ascode_load_calculator_info_action', [$this, 'ascode_load_calculator_info_action']);
     }
 
     /**
@@ -63,12 +64,49 @@ class AdminAjax
             'post_status'   => 'publish',
         );
 
-        var_dump($calculator_post_value);
-
         wp_insert_post($calculator_post_value);
 
         wp_send_json_success([
             'message' => 'Calculator are Created Successfully.',
         ]);
+
+        wp_die();
+    }
+
+    /**
+     * Load calculator settings data
+     *
+     * @return void
+     */
+    public function ascode_load_calculator_info_action()
+    {
+        $calculator_list = get_posts([
+            'post_type' => 'calculator',
+            'posts_per_page' => -1,
+        ]);
+
+        $calculator_list_array = [];
+
+        foreach ($calculator_list as $calculator) {
+            $calculator_id = $calculator->ID;
+            $calculator_view_data = [
+                'id'            => $calculator_id,
+                'name'          => '',
+                'description'   => '',
+                'shortcode'     => ''
+            ];
+            $calculator_info = maybe_unserialize($calculator->post_content);
+            $calculator_info_list = $calculator_info['calculatorInfo'];
+
+            foreach ($calculator_info_list as $calculator_info) {
+                $calculator_view_data['name'] = $calculator_info['calculator']['calculatorName'];
+                $calculator_view_data['description'] = $calculator_info['calculator']['description'];
+                $calculator_view_data['shortcode'] = $calculator_info['calculator']['calculatorName'];
+            }
+
+            $calculator_list_array[] = $calculator_view_data;
+        }
+
+        wp_send_json_success($calculator_list_array);
     }
 }
