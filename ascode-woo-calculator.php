@@ -50,7 +50,7 @@
     /**
      * Singleton instance
      *
-     * @return \AsCode_Woo_Calculator
+     * @return AsCode_Woo_Calculator
      */
     public static function init(){
         static $instance = false;
@@ -106,7 +106,7 @@
  /**
   * Initilized the main plugin
   *
-  * @return \AsCode_Woo_Calculator
+  * @return AsCode_Woo_Calculator
   */
  function ascode_woo_calcualtor(){
     return AsCode_Woo_Calculator::init();

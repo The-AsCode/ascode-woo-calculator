@@ -7,10 +7,11 @@ namespace AsCode\WooCalculator\Front;
 class Shortcode {
     public function __construct()
     {
-        add_shortcode( 'foobar', [$this, 'foobar_func'] );
+        add_shortcode( 'sample-shortcode',[$this,'shortcode_function']  );
     }
 
-    function foobar_func( $atts ){
-        return '<h1>Hello from shorcode!</h1>';
+    function shortcode_function(  ): string
+    {
+        return "Hello Shortcode";
     }
 }
