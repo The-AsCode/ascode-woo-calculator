@@ -89,6 +89,7 @@ class AdminAjax
 
         foreach ($calculator_list as $calculator) {
             $calculator_id = $calculator->ID;
+            $calculator_shortcode = '[Woo-Calculator-'. $calculator_id . ']';
             $calculator_view_data = [
                 'id'            => $calculator_id,
                 'name'          => '',
@@ -101,7 +102,7 @@ class AdminAjax
             foreach ($calculator_info_list as $calculator_info) {
                 $calculator_view_data['name'] = $calculator_info['calculator']['calculatorName'];
                 $calculator_view_data['description'] = $calculator_info['calculator']['description'];
-                $calculator_view_data['shortcode'] = $calculator_info['calculator']['calculatorName'];
+                $calculator_view_data['shortcode'] = $calculator_shortcode;
             }
 
             $calculator_list_array[] = $calculator_view_data;
