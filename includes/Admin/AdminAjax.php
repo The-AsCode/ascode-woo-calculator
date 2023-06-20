@@ -89,7 +89,7 @@ class AdminAjax
 
         foreach ($calculator_list as $calculator) {
             $calculator_id = $calculator->ID;
-            $calculator_shortcode = '[Woo-Calculator-'. $calculator_id . ']';
+            $calculator_shortcode = '[woo-calculator id='. $calculator_id . ']';
             $calculator_view_data = [
                 'id'            => $calculator_id,
                 'name'          => '',
