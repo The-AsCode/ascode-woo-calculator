@@ -605,6 +605,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./tailwind/frontend-input.css":
+/*!*************************************!*\
+  !*** ./tailwind/frontend-input.css ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/cjs/react-dom.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
@@ -35517,6 +35529,7 @@ const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(TrashIcon);
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/assets/admin/js/dashboard": 0,
+/******/ 			"assets/front/css/output": 0,
 /******/ 			"assets/admin/css/output": 0
 /******/ 		};
 /******/ 		
@@ -35567,8 +35580,9 @@ const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(TrashIcon);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/admin/css/output"], () => (__webpack_require__("./assets/admin/src/dashboard/index.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/admin/css/output"], () => (__webpack_require__("./tailwind/input.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/front/css/output","assets/admin/css/output"], () => (__webpack_require__("./assets/admin/src/dashboard/index.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/front/css/output","assets/admin/css/output"], () => (__webpack_require__("./tailwind/input.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/front/css/output","assets/admin/css/output"], () => (__webpack_require__("./tailwind/frontend-input.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -1,5 +1,6 @@
 {
     "/assets/admin/js/dashboard.js": "/assets/admin/js/dashboard.js",
     "/assets/front/js/frontend.js": "/assets/front/js/frontend.js",
+    "/assets/front/css/output.css": "/assets/front/css/output.css",
     "/assets/admin/css/output.css": "/assets/admin/css/output.css"
 }

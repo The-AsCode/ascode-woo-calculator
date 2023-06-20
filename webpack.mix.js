@@ -5,3 +5,4 @@ mix.js('assets/admin/src/dashboard/index.js', 'assets/admin/js/dashboard.js').re
 mix.js('assets/front/src/view/index.js', 'assets/front/js/frontend.js').react();
 
 mix.postCss('./tailwind/input.css', 'assets/admin/css/output.css').tailwind('./tailwind.config.js');
+mix.postCss('./tailwind/frontend-input.css', 'assets/front/css/output.css').tailwind('./tailwind.config.js');
