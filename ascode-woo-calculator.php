@@ -97,7 +97,7 @@
         if( is_admin() ) {
             new AsCode\WooCalculator\Admin();
         } else {
-            // for frontend
+            new AsCode\WooCalculator\Front();
         }
     }
 
