@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/admin/src/dashboard/js/App.js":
-/*!**********************************************!*\
-  !*** ./assets/admin/src/dashboard/js/App.js ***!
-  \**********************************************/
+/***/ "./assets/admin/src/dashboard/App.js":
+/*!*******************************************!*\
+  !*** ./assets/admin/src/dashboard/App.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -14,9 +14,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_dashboard_CalculatorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/dashboard/CalculatorList */ "./assets/admin/src/dashboard/js/components/dashboard/CalculatorList.js");
-/* harmony import */ var _components_dashboard_AddNewCalculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/dashboard/AddNewCalculator */ "./assets/admin/src/dashboard/js/components/dashboard/AddNewCalculator.js");
-/* harmony import */ var _components_dashboard_new__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/dashboard/new */ "./assets/admin/src/dashboard/js/components/dashboard/new.js");
+/* harmony import */ var _components_dashboard_CalculatorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/dashboard/CalculatorList */ "./assets/admin/src/dashboard/components/dashboard/CalculatorList.js");
+/* harmony import */ var _components_dashboard_AddNewCalculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/dashboard/AddNewCalculator */ "./assets/admin/src/dashboard/components/dashboard/AddNewCalculator.js");
+/* harmony import */ var _components_dashboard_new__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/dashboard/new */ "./assets/admin/src/dashboard/components/dashboard/new.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -34,10 +34,10 @@ function App() {
 
 /***/ }),
 
-/***/ "./assets/admin/src/dashboard/js/components/dashboard/AddNewCalculator.js":
-/*!********************************************************************************!*\
-  !*** ./assets/admin/src/dashboard/js/components/dashboard/AddNewCalculator.js ***!
-  \********************************************************************************/
+/***/ "./assets/admin/src/dashboard/components/dashboard/AddNewCalculator.js":
+/*!*****************************************************************************!*\
+  !*** ./assets/admin/src/dashboard/components/dashboard/AddNewCalculator.js ***!
+  \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -180,10 +180,10 @@ function AddNewCalculator() {
 
 /***/ }),
 
-/***/ "./assets/admin/src/dashboard/js/components/dashboard/CalculatorList.js":
-/*!******************************************************************************!*\
-  !*** ./assets/admin/src/dashboard/js/components/dashboard/CalculatorList.js ***!
-  \******************************************************************************/
+/***/ "./assets/admin/src/dashboard/components/dashboard/CalculatorList.js":
+/*!***************************************************************************!*\
+  !*** ./assets/admin/src/dashboard/components/dashboard/CalculatorList.js ***!
+  \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -326,10 +326,10 @@ var CalculatorList = function CalculatorList() {
 
 /***/ }),
 
-/***/ "./assets/admin/src/dashboard/js/components/dashboard/new.js":
-/*!*******************************************************************!*\
-  !*** ./assets/admin/src/dashboard/js/components/dashboard/new.js ***!
-  \*******************************************************************/
+/***/ "./assets/admin/src/dashboard/components/dashboard/new.js":
+/*!****************************************************************!*\
+  !*** ./assets/admin/src/dashboard/components/dashboard/new.js ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -571,17 +571,17 @@ function New() {
 
 /***/ }),
 
-/***/ "./assets/admin/src/dashboard/js/index.js":
-/*!************************************************!*\
-  !*** ./assets/admin/src/dashboard/js/index.js ***!
-  \************************************************/
+/***/ "./assets/admin/src/dashboard/index.js":
+/*!*********************************************!*\
+  !*** ./assets/admin/src/dashboard/index.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./assets/admin/src/dashboard/js/App.js");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./assets/admin/src/dashboard/App.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -35568,7 +35568,7 @@ const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(TrashIcon);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/admin/css/output"], () => (__webpack_require__("./assets/admin/src/dashboard/js/index.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/admin/css/output"], () => (__webpack_require__("./assets/admin/src/dashboard/index.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/admin/css/output"], () => (__webpack_require__("./tailwind/input.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
