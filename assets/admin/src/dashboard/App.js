@@ -1,7 +1,7 @@
 import React from 'react'
-import CalculatorList from './components/dashboard/CalculatorList'
-import AddNewCalculator from './components/dashboard/AddNewCalculator'
-import New from "./components/dashboard/new";
+import CalculatorList from './components/CalculatorList'
+import AddNewCalculator from './components/AddNewCalculator'
+import New from "./components/new";
 
 export default function App() {
   return (
