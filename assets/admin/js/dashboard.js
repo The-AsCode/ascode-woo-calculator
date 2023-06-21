@@ -213,9 +213,10 @@ var CalculatorList = function CalculatorList() {
     setData = _useState2[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
-      'action': 'ascode_load_calculator_info_action',
-      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
+      'action': 'ascode_load_calculator_info_action'
+      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
     };
+
     jQuery.post(ajaxurl, data, function (response) {
       console.log(response.data);
       setData(response.data);
@@ -416,9 +417,10 @@ function New() {
   var handleSave = function handleSave() {
     var data = {
       'action': 'ascode_save_calculator_info_action',
-      'calculatorInfo': sections,
-      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
+      'calculatorInfo': sections
+      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
     };
+
     jQuery.post(ajaxurl, data, function (response) {
       console.log(response.data.message);
       alert(response.data.message);

@@ -72,7 +72,7 @@ export default function New() {
         let data = {
             'action': 'ascode_save_calculator_info_action',
             'calculatorInfo': sections,
-            '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+            // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
         };
 
         jQuery.post(ajaxurl, data, (response) => {

@@ -23,7 +23,7 @@ class AdminAjax
      */
     public function ascode_save_calculator_info_action()
     {
-        check_ajax_referer('ascode-calculator-save-data');
+        // check_ajax_referer('ascode-calculator-save-data');
 
         /**
          * Recursive function to sanitize multidimensional array values.
@@ -89,7 +89,7 @@ class AdminAjax
 
         foreach ($calculator_list as $calculator) {
             $calculator_id = $calculator->ID;
-            $calculator_shortcode = '[woo-calculator id='. $calculator_id . ']';
+            $calculator_shortcode = '[woo-calculator id=' . $calculator_id . ']';
             $calculator_view_data = [
                 'id'            => $calculator_id,
                 'name'          => '',
