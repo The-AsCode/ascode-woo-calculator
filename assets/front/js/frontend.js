@@ -14,6 +14,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _component_SingleCalculator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component/SingleCalculator */ "./assets/front/src/view/component/SingleCalculator.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function App(_ref) {
+  var calculatorId = _ref.calculatorId;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "border",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_component_SingleCalculator__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      calculatorId: calculatorId
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./assets/front/src/view/component/SingleCalculator.js":
+/*!*************************************************************!*\
+  !*** ./assets/front/src/view/component/SingleCalculator.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SingleCalculator)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -23,7 +52,8 @@ function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefine
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-function App() {
+function SingleCalculator(_ref) {
+  var calculatorId = _ref.calculatorId;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     data = _useState2[0],
@@ -31,7 +61,8 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
       'action': 'ascode_load_calculator_preview_info_action',
-      '_ajax_nonce': output_ajax_object.ajax_nonce
+      '_ajax_nonce': output_ajax_object.ajax_nonce,
+      'calculatorId': calculatorId
     };
     jQuery.post(output_ajax_object.ajax_url, data, function (response) {
       console.log(response.data);
@@ -40,8 +71,7 @@ function App() {
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "border",
-    children: "Hello from js"
+    children: "singleCalculator"
   });
 }
 
@@ -34855,8 +34885,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('ascode_calculator_view'));
+var calculatorId = document.getElementById('ascode_calculator_view').getAttribute('data-value');
 root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), {
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_App__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_App__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    calculatorId: calculatorId
+  })
 }));
 })();
 

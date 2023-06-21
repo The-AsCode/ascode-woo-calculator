@@ -45,7 +45,7 @@ class Shortcode
         //        return "Hello {$attr}";
 
         $shortcode_from = '<div style="display:flex">
-            <div id="ascode_calculator_view" style="padding:20px;">Hello</div>
+            <div id="ascode_calculator_view" data-value="' . $calculator_id . '" style="padding:20px;">Hello</div>
             <div style="padding:20px;">Product will show here!</div>
         </div>';
 
