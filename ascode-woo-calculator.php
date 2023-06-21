@@ -17,20 +17,21 @@
  */
 
 
- if( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
     exit;
- }
+}
 
- if( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-    die( 'Please run `composer install` on main plugin directory' );
- }
+if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
+    die('Please run `composer install` on main plugin directory');
+}
 
- require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
- /**
-  * Plugin main class
-  */
- final class AsCode_Woo_Calculator {
+/**
+ * Plugin main class
+ */
+final class AsCode_Woo_Calculator
+{
 
     /**
      * Define plugin version
@@ -39,12 +40,13 @@
      */
     const version = 1.0;
 
-    private function __construct(){
+    private function __construct()
+    {
         $this->define_constants();
 
-        register_activation_hook( __FILE__, [ $this, 'activate' ] );
+        register_activation_hook(__FILE__, [$this, 'activate']);
 
-        add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
+        add_action('plugins_loaded', [$this, 'init_plugin']);
     }
 
     /**
@@ -52,10 +54,11 @@
      *
      * @return AsCode_Woo_Calculator
      */
-    public static function init(){
+    public static function init()
+    {
         static $instance = false;
 
-        if( ! $instance ) {
+        if (!$instance) {
             $instance = new self();
         }
 
@@ -67,12 +70,13 @@
      *
      * @return void
      */
-    function define_constants() {
-        define( 'ASCODE_WOO_CALCULATOR_VERSION', self::version );
-        define( 'ASCODE_WOO_CALCULATOR_FILE', __FILE__ );
-        define( 'ASCODE_WOO_CALCULATOR_DIR_PATH', __DIR__ );
-        define( 'ASCODE_WOO_CALCULATOR_URL', plugins_url( '', ASCODE_WOO_CALCULATOR_FILE ) );
-        define( 'ASC_WOO_CALCULATOR_ASSETS', ASCODE_WOO_CALCULATOR_URL . '/assets' );
+    function define_constants()
+    {
+        define('ASCODE_WOO_CALCULATOR_VERSION', self::version);
+        define('ASCODE_WOO_CALCULATOR_FILE', __FILE__);
+        define('ASCODE_WOO_CALCULATOR_DIR_PATH', __DIR__);
+        define('ASCODE_WOO_CALCULATOR_URL', plugins_url('', ASCODE_WOO_CALCULATOR_FILE));
+        define('ASC_WOO_CALCULATOR_ASSETS', ASCODE_WOO_CALCULATOR_URL . '/assets');
     }
 
     /**
@@ -80,11 +84,12 @@
      *
      * @return void
      */
-    function activate() {
-        $installed = get_option( 'ascode_installed_time' );
+    function activate()
+    {
+        $installed = get_option('ascode_installed_time');
 
-        if( ! $installed ) {
-            update_option( 'ascode_installed_time', time() );
+        if (!$installed) {
+            update_option('ascode_installed_time', time());
         }
     }
 
@@ -93,24 +98,25 @@
      *
      * @return void
      */
-    public function init_plugin() {
-        if( is_admin() ) {
+    public function init_plugin()
+    {
+        if (is_admin()) {
             new AsCode\WooCalculator\Admin();
-        } else {
-            new AsCode\WooCalculator\Front();
-        }
+        } 
+        
+        new AsCode\WooCalculator\Front();
     }
+}
 
- }
-
- /**
-  * Initilized the main plugin
-  *
-  * @return AsCode_Woo_Calculator
-  */
- function ascode_woo_calcualtor(){
+/**
+ * Initilized the main plugin
+ *
+ * @return AsCode_Woo_Calculator
+ */
+function ascode_woo_calcualtor()
+{
     return AsCode_Woo_Calculator::init();
- }
+}
 
- //kick-off the plugin
- ascode_woo_calcualtor();
+//kick-off the plugin
+ascode_woo_calcualtor();

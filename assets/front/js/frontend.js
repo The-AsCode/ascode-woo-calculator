@@ -30,8 +30,8 @@ function App() {
     setData = _useState2[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
-      'action': 'ascode_load_calculator_info_action',
-      '_ajax_nonce': output_ajax_object.nonce
+      'action': 'ascode_load_calculator_preview_info_action',
+      '_ajax_nonce': output_ajax_object.ajax_nonce
     };
     jQuery.post(output_ajax_object.ajax_url, data, function (response) {
       console.log(response.data);

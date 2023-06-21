@@ -18,5 +18,6 @@ class Front
     {
         new Front\Enqueue();
         new Front\Shortcode();
+        new Front\FrontAjax();
     }
 }

@@ -21,9 +21,10 @@ class Enqueue
         wp_localize_script(
             'ascode-woo-calculator-frontend',
             'output_ajax_object',
-             [
-                 'ajax_url' => admin_url( 'admin-ajax.php' ),
-                 'ajax_nonce' => wp_create_nonce( 'ascode-calculator-show-calculator' )
-             ] );
+            [
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'ajax_nonce' => wp_create_nonce('ascode-calculator-show-calculator')
+            ]
+        );
     }
 }
