@@ -7,12 +7,12 @@ export default function SingleCalculator({ calculatorId }) {
     let data = {
       'action': 'ascode_load_calculator_preview_info_action',
       '_ajax_nonce': output_ajax_object.ajax_nonce,
-      'calculatorId': calculatorId,
+      'calculator_id': calculatorId,
     };
 
     jQuery.post(output_ajax_object.ajax_url, data, (response) => {
       console.log(response.data);
-      setData('response.data');
+      // setData('response.data');
       // alert(response.data.message);
     });
 

@@ -14,6 +14,15 @@ class FrontAjax
     public function ascode_load_calculator_preview_info_action()
     {
         check_ajax_referer('ascode-calculator-show-calculator');
-        var_dump($_POST['calculatorId']);
+
+        $single_calculator_id = $_POST['calculator_id'];
+
+        $single_calculator_data = get_post($single_calculator_id);
+
+        $calculator_info = maybe_unserialize($single_calculator_data->post_content);
+
+        $calculator_fields = $calculator_info['calculatorInfo'][0]['fields'];
+
+        wp_send_json_success($calculator_fields);
     }
 }
