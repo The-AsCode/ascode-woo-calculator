@@ -21,7 +21,6 @@ __webpack_require__.r(__webpack_exports__);
 
 function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    className: "border",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_component_SingleCalculator__WEBPACK_IMPORTED_MODULE_1__["default"], {})
   });
 }
@@ -50,7 +49,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function SingleCalculator() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -63,42 +61,80 @@ function SingleCalculator() {
       'calculator_id': document.getElementById('ascode_calculator_view').getAttribute('data-value')
     };
     jQuery.post(output_ajax_object.ajax_url, data, function (response) {
-      // console.log(response.data);
       setData(response.data);
-      // alert(response.data.message);
     });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "p-4",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        className: "bg-gray-50 p-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "p-4",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "p-4",
-            children: "Load Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "p-4",
-            children: "Load Value"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: data.map(function (row, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            className: "p-4",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "p-4",
-              children: row.name
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "p-4 text-center",
-              children: row.value
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "px-4 sm:px-6 lg:px-8",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "flow-root",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
+            className: "table-fixed min-w-full divide-y border",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                  scope: "col",
+                  className: "whitespace-nowrap w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900",
+                  children: "Load Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                  scope: "col",
+                  className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900",
+                  children: "Load Value"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                  scope: "col",
+                  className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semi-bold text-gray-900",
+                  children: "Quantity"
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
+              className: "divide-y divide-gray-200",
+              children: data.map(function (row, index) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                    className: "whitespace-nowrap p-4 text-sm font-medium text-gray-700",
+                    children: row.name
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                    className: "whitespace-nowrap p-4 text-sm text-gray-500 text-center",
+                    children: row.value
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                    className: "whitespace-nowrap text-sm text-gray-500",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "w-24 rounded",
+                      type: "number"
+                    })
+                  })]
+                }, index);
+              })
             })]
-          }, index);
+          })
         })
-      })]
+      })
     })
-  });
+  })
+
+  // <>
+  //   <table className='p-4'>
+  //     <thead className="bg-gray-50 p-4">
+  //       <tr className='p-4'>
+  //         <th className='p-4'>Load Name</th>
+  //         <th className='p-4'>Load Value</th>
+  //       </tr>
+  //     </thead>
+  //     <tbody>
+  //       {data.map((row, index) => (
+  //         <tr key={index} className='p-4'>
+  //           <td className='p-4'>{row.name}</td>
+  //           <td className='p-4 text-center'>{row.value}</td>
+  //         </tr>
+  //       ))}
+  //     </tbody>
+  //   </table>
+  // </>
+  ;
 }
 
 /***/ }),
