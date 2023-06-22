@@ -19,5 +19,6 @@ class Admin
         new Admin\Menu();
         new Admin\Enqueue();
         new Admin\AdminAjax();
+        new Admin\AdminAction();
     }
 }
