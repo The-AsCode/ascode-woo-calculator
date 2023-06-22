@@ -40,6 +40,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -64,6 +68,14 @@ function SingleCalculator() {
       setData(response.data);
     });
   }, []);
+  var totalFieldsValue = [];
+  var handleInputIncrement = function handleInputIncrement(index, value) {
+    var updatedData = _toConsumableArray(data);
+    totalValue[index] = updatedData[index]['value'] * value;
+    console.log(totalValue.reduce(function (a, b) {
+      return a + b;
+    }, 0));
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "px-4 sm:px-6 lg:px-8",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -97,14 +109,17 @@ function SingleCalculator() {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
                     className: "whitespace-nowrap p-4 text-sm font-medium text-gray-700",
                     children: row.name
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
                     className: "whitespace-nowrap p-4 text-sm text-gray-500 text-center",
-                    children: row.value
+                    children: [row.value, " Watt"]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
                     className: "whitespace-nowrap text-sm text-gray-500",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                       className: "w-24 rounded",
-                      type: "number"
+                      type: "number",
+                      onChange: function onChange(e) {
+                        return handleInputIncrement(index, parseInt(e.target.value));
+                      }
                     })
                   })]
                 }, index);
@@ -114,27 +129,7 @@ function SingleCalculator() {
         })
       })
     })
-  })
-
-  // <>
-  //   <table className='p-4'>
-  //     <thead className="bg-gray-50 p-4">
-  //       <tr className='p-4'>
-  //         <th className='p-4'>Load Name</th>
-  //         <th className='p-4'>Load Value</th>
-  //       </tr>
-  //     </thead>
-  //     <tbody>
-  //       {data.map((row, index) => (
-  //         <tr key={index} className='p-4'>
-  //           <td className='p-4'>{row.name}</td>
-  //           <td className='p-4 text-center'>{row.value}</td>
-  //         </tr>
-  //       ))}
-  //     </tbody>
-  //   </table>
-  // </>
-  ;
+  });
 }
 
 /***/ }),

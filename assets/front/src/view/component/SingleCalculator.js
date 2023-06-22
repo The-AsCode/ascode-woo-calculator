@@ -16,6 +16,13 @@ export default function SingleCalculator() {
 
   }, []);
 
+  let totalFieldsValue = [];
+  const handleInputIncrement = (index, value)=> {
+    const updatedData = [...data];
+    totalValue[index] = (updatedData[index]['value'] * value);
+    console.log(totalValue.reduce((a,b)=>a+b,0));
+  }
+
   return (
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flow-root">
@@ -41,9 +48,13 @@ export default function SingleCalculator() {
                       <td className="whitespace-nowrap p-4 text-sm font-medium text-gray-700">
                         {row.name}
                       </td>
-                      <td className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">{row.value}</td>
+                      <td className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">{row.value} Watt</td>
                       <td className="whitespace-nowrap text-sm text-gray-500">
-                        <input className='w-24 rounded' type="number"/>
+                        <input
+                            className='w-24 rounded'
+                            type="number"
+                            onChange={(e) => handleInputIncrement(index, parseInt(e.target.value))}
+                        />
                       </td>
                     </tr>
                 ))}
@@ -53,26 +64,5 @@ export default function SingleCalculator() {
           </div>
         </div>
       </div>
-
-
-
-    // <>
-    //   <table className='p-4'>
-    //     <thead className="bg-gray-50 p-4">
-    //       <tr className='p-4'>
-    //         <th className='p-4'>Load Name</th>
-    //         <th className='p-4'>Load Value</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {data.map((row, index) => (
-    //         <tr key={index} className='p-4'>
-    //           <td className='p-4'>{row.name}</td>
-    //           <td className='p-4 text-center'>{row.value}</td>
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </table>
-    // </>
   )
 }
