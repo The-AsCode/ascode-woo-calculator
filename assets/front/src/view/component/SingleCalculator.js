@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function SingleCalculator() {
   const [data, setData] = useState([]);
+  const [dataSum, setDataSum] = useState(null)
 
   useEffect(() => {
     let data = {
@@ -16,11 +17,16 @@ export default function SingleCalculator() {
 
   }, []);
 
-  let totalFieldsValue = [];
-  const handleInputIncrement = (index, value)=> {
+  const handleInputIncrement = (index, value, name)=> {
+    if(Number(value)<0){
+      return;
+    }
     const updatedData = [...data];
-    totalValue[index] = (updatedData[index]['value'] * value);
-    console.log(totalValue.reduce((a,b)=>a+b,0));
+    setDataSum({
+      ...dataSum,
+      [name.name] : updatedData[index]['value'] * value
+    });
+
   }
 
   return (
@@ -53,13 +59,18 @@ export default function SingleCalculator() {
                         <input
                             className='w-24 rounded'
                             type="number"
-                            onChange={(e) => handleInputIncrement(index, parseInt(e.target.value))}
+                            min={0}
+                            onChange={(e) => {
+                              e.preventDefault()
+                              handleInputIncrement(index, parseInt(e.target.value), row)
+                            }}
                         />
                       </td>
                     </tr>
                 ))}
                 </tbody>
               </table>
+              <div>{ dataSum && Object.values(dataSum).reduce((a,b)=>a+b,0)}</div>
             </div>
           </div>
         </div>
