@@ -68,6 +68,10 @@ function SingleCalculator() {
     _useState4 = _slicedToArray(_useState3, 2),
     dataSum = _useState4[0],
     setDataSum = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    viewProduct = _useState6[0],
+    setViewProduct = _useState6[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
       'action': 'ascode_load_calculator_preview_info_action',
@@ -85,65 +89,106 @@ function SingleCalculator() {
     var updatedData = _toConsumableArray(data);
     setDataSum(_objectSpread(_objectSpread({}, dataSum), {}, _defineProperty({}, name.name, updatedData[index]['value'] * value)));
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "px-4 sm:px-6 lg:px-8",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "flow-root",
+  var handleSreachClick = function handleSreachClick(e) {
+    e.preventDefault();
+    var data = {
+      'action': 'ascode_preview_product_action',
+      '_ajax_nonce': output_ajax_object.ajax_nonce,
+      'total_value': Object.values(dataSum).reduce(function (a, b) {
+        return a + b;
+      }, 0)
+    };
+    jQuery.post(output_ajax_object.ajax_url, data, function (response) {
+      // console.log(response);
+      // const targetDiv = document.getElementById("ascode_calculaor_product");
+      if (response.data) {
+        setViewProduct(response.data);
+        // console.log(viewProduct);
+      }
+      // if(viewData.length > 0) {
+      //   jQuery(targetDiv).children().remove();
+      //   jQuery(targetDiv).children().empty();
+      // }
+      //
+      // let viewProduct = `<div>
+      //                       <img src="${viewData.product_image}">\
+      //                       <h2>${viewData.product_name}</h2>\
+      //                       <p>${viewData.product_price}</p>\
+      //                       <a href="${viewData.add_to_cart}" class="button">Add to cart</a>
+      //                   </div>`;
+      //
+      // jQuery(targetDiv).append(viewProduct);
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "flex",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "px-4 sm:px-6 lg:px-8",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-            className: "table-fixed min-w-full divide-y border",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  scope: "col",
-                  className: "whitespace-nowrap w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900",
-                  children: "Load Name"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  scope: "col",
-                  className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900",
-                  children: "Load Value"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  scope: "col",
-                  className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semi-bold text-gray-900",
-                  children: "Quantity"
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-              className: "divide-y divide-gray-200",
-              children: data.map(function (row, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                    className: "whitespace-nowrap p-4 text-sm font-medium text-gray-700",
-                    children: row.name
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-                    className: "whitespace-nowrap p-4 text-sm text-gray-500 text-center",
-                    children: [row.value, " Watt"]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                    className: "whitespace-nowrap text-sm text-gray-500",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                      className: "w-24 rounded",
-                      type: "number",
-                      min: 0,
-                      onChange: function onChange(e) {
-                        e.preventDefault();
-                        handleInputIncrement(index, parseInt(e.target.value), row);
-                      }
-                    })
+        className: "flow-root",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
+              className: "table-fixed min-w-full divide-y border",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                    scope: "col",
+                    className: "whitespace-nowrap w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900",
+                    children: "Load Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                    scope: "col",
+                    className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900",
+                    children: "Load Value"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                    scope: "col",
+                    className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semi-bold text-gray-900",
+                    children: "Quantity"
                   })]
-                }, index);
-              })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
+                className: "divide-y divide-gray-200",
+                children: data.map(function (row, index) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                      className: "whitespace-nowrap p-4 text-sm font-medium text-gray-700",
+                      children: row.name
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+                      className: "whitespace-nowrap p-4 text-sm text-gray-500 text-center",
+                      children: [row.value, " Watt"]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                      className: "whitespace-nowrap text-sm text-gray-500",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                        className: "w-24 rounded",
+                        type: "number",
+                        min: 0,
+                        onChange: function onChange(e) {
+                          e.preventDefault();
+                          handleInputIncrement(index, parseInt(e.target.value), row);
+                        }
+                      })
+                    })]
+                  }, index);
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              children: dataSum && Object.values(dataSum).reduce(function (a, b) {
+                return a + b;
+              }, 0)
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              onClick: handleSreachClick,
+              children: "Search Match"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            children: dataSum && Object.values(dataSum).reduce(function (a, b) {
-              return a + b;
-            }, 0)
-          })]
+          })
         })
       })
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "view-product",
+      children: console.log(viewProduct)
+    })]
   });
 }
 

@@ -46,31 +46,7 @@ class Shortcode
 
         ob_start();
         ?>
-        <div style="display:flex">
-            <div id="ascode_calculator_view" data-value="<?php echo $calculator_id; ?>" style="padding:20px;">Hello</div>
-            <div style="padding:20px;">
-            <?php
-                global $product;
-
-                // Get the product ID
-                $product_id = 32;
-
-                // Get the product object
-                $product = wc_get_product($product_id);
-
-                // Output the product image
-                echo '<img src="' . wp_get_attachment_image_src($product->get_image_id(), 'full')[0] . '" alt="' . $product->get_name() . '">';
-
-                // Output the product title
-                echo '<h2>' . $product->get_name() . '</h2>';
-
-                // Output the product price
-                echo '<p>' . $product->get_price_html() . '</p>';
-
-                // Output the product add to cart button
-                echo '<a href="' . $product->add_to_cart_url() . '" class="button">' . __('Add to Cart', 'woocommerce') . '</a>';
-              ?>
-            </div>
+        <div id="ascode_calculator_view" data-value="<?php echo $calculator_id; ?>">hello
         </div>
 
         <?php
