@@ -11,6 +11,11 @@ class FrontAjax
         add_action('wp_ajax_nopriv_ascode_load_calculator_preview_info_action', [$this, 'ascode_load_calculator_preview_info_action']);
     }
 
+    /**
+     * calculator preview function
+     *
+     * @return void
+     */
     public function ascode_load_calculator_preview_info_action()
     {
         check_ajax_referer('ascode-calculator-show-calculator');
