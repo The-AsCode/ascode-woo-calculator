@@ -14,6 +14,11 @@ class AdminAction {
      * @return void
      */
     public function ascode_custom_field_to_product() {
+        global $post;
+
+        // Get the existing custom field value
+        $custom_field_value = get_post_meta($post->ID, 'woo_calculator', true);
+
         echo '<div class="options_group">';
         woocommerce_wp_text_input(
             array(
@@ -21,6 +26,7 @@ class AdminAction {
                 'label'         => 'Capacity',
                 'type'          => 'number',
                 'description'   => 'Enter a value number value in Watt',
+                'value'         => $custom_field_value
             )
         );
         echo '</div>';

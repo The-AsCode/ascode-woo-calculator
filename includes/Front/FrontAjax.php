@@ -70,8 +70,9 @@ class FrontAjax
         $product_view_data = [
             'product_image' => wp_get_attachment_image_src($product->get_image_id(), 'full')[0],
             'product_name'  => $product->get_name(),
-            'product_price' =>$product->get_price(),
-            'add_to_cart'   =>$product->add_to_cart_url(),
+            'product_price' => $product->get_price(),
+            'add_to_cart'   => $product->add_to_cart_url(),
+            'currency_code' => get_option('woocommerce_currency')
         ];
         wp_send_json_success( $product_view_data, true  );
         wp_die();

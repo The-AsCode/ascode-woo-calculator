@@ -99,30 +99,13 @@ function SingleCalculator() {
       }, 0)
     };
     jQuery.post(output_ajax_object.ajax_url, data, function (response) {
-      // console.log(response);
-      // const targetDiv = document.getElementById("ascode_calculaor_product");
       if (response.data) {
         setViewProduct(response.data);
-        // console.log(viewProduct);
       }
-      // if(viewData.length > 0) {
-      //   jQuery(targetDiv).children().remove();
-      //   jQuery(targetDiv).children().empty();
-      // }
-      //
-      // let viewProduct = `<div>
-      //                       <img src="${viewData.product_image}">\
-      //                       <h2>${viewData.product_name}</h2>\
-      //                       <p>${viewData.product_price}</p>\
-      //                       <a href="${viewData.add_to_cart}" class="button">Add to cart</a>
-      //                   </div>`;
-      //
-      // jQuery(targetDiv).append(viewProduct);
     });
   };
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "flex",
+    className: "justify-between flex w-full",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "px-4 sm:px-6 lg:px-8",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -132,7 +115,7 @@ function SingleCalculator() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-              className: "table-fixed min-w-full divide-y border",
+              className: "table-fixed min-w-full divide-y border rounded",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
@@ -174,20 +157,46 @@ function SingleCalculator() {
                   }, index);
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              children: dataSum && Object.values(dataSum).reduce(function (a, b) {
-                return a + b;
-              }, 0)
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "justify-between flex whitespace-nowrap p-4 text-sm font-medium text-gray-700 border rounded mt-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                children: "Total Watt"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                children: dataSum ? Object.values(dataSum).reduce(function (a, b) {
+                  return a + b;
+                }, 0) : 0
+              })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               onClick: handleSreachClick,
+              className: "bg-blue-500 hover:bg-blue-700 text-white mt-3 py-2 px-3 rounded",
               children: "Search Match"
             })]
           })
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "view-product",
-      children: console.log(viewProduct)
+      className: "view-product justify-center",
+      children: viewProduct && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "border rounded p-4",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          src: viewProduct.product_image,
+          alt: viewProduct.product_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex justify-between p-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+            children: viewProduct.product_name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: viewProduct.product_price + ' ' + viewProduct.currency_code
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+          href: viewProduct.add_to_cart,
+          className: "button",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "bg-blue-500 hover:bg-blue-700 text-white py-2 px-3 rounded",
+            children: "Add to Cart"
+          })
+        })]
+      })
     })]
   });
 }

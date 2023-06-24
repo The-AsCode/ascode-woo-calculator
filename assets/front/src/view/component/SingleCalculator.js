@@ -38,37 +38,21 @@ export default function SingleCalculator() {
     };
 
     jQuery.post(output_ajax_object.ajax_url, data, (response) => {
-      // console.log(response);
-      // const targetDiv = document.getElementById("ascode_calculaor_product");
       if(response.data){
         setViewProduct(response.data);
-        // console.log(viewProduct);
       }
-      // if(viewData.length > 0) {
-      //   jQuery(targetDiv).children().remove();
-      //   jQuery(targetDiv).children().empty();
-      // }
-      //
-      // let viewProduct = `<div>
-      //                       <img src="${viewData.product_image}">\
-      //                       <h2>${viewData.product_name}</h2>\
-      //                       <p>${viewData.product_price}</p>\
-      //                       <a href="${viewData.add_to_cart}" class="button">Add to cart</a>
-      //                   </div>`;
-      //
-      // jQuery(targetDiv).append(viewProduct);
     });
 
 
   }
 
   return (
-      <div className='flex'>
+      <div className='justify-between flex w-full'>
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flow-root">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <table className="table-fixed min-w-full divide-y border">
+                <table className="table-fixed min-w-full divide-y border rounded">
                   <thead>
                   <tr>
                     <th scope="col" className="whitespace-nowrap w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900">
@@ -104,13 +88,35 @@ export default function SingleCalculator() {
                   ))}
                   </tbody>
                 </table>
-                <div>{ dataSum && Object.values(dataSum).reduce((a,b)=>a+b,0)}</div>
-                <button onClick={handleSreachClick}>Search Match</button>
+                <div className='justify-between flex whitespace-nowrap p-4 text-sm font-medium text-gray-700 border rounded mt-2'>
+                  <div>Total Watt</div>
+                  <div>{ dataSum ? Object.values(dataSum).reduce((a,b)=>a+b,0) : 0 }</div>
+                </div>
+                <button
+                    onClick={handleSreachClick}
+                    className='bg-blue-500 hover:bg-blue-700 text-white mt-3 py-2 px-3 rounded'
+                >Search Match
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className='view-product'>{console.log(viewProduct)}</div>
+        <div className='view-product justify-center'>
+          { viewProduct &&
+              <div className='border rounded p-4'>
+                <img src={viewProduct.product_image} alt={viewProduct.product_name}/>
+                <div className='flex justify-between p-3'>
+                  <h2>{viewProduct.product_name}</h2>
+                  <p>{viewProduct.product_price + ' ' + viewProduct.currency_code}</p>
+                </div>
+                <a href={viewProduct.add_to_cart} className="button">
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-3 rounded">
+                  Add to Cart
+                  </button>
+                </a>
+              </div>
+          }
+        </div>
       </div>
    )
 }
