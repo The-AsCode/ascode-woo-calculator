@@ -1,90 +1,204 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 export default function AddNewCalculator() {
-    const [sections, setSections] = useState([{ name: '', value: 0 }]);
+    const navigate = useNavigate();
+    const [sections, setSections] = useState([
+        {
+            calculator: {
+                calculatorName: '',
+                description: '',
+                inputType: ''
+            },
+            fields: [
+                {
+                    name: '',
+                    value: ''
+                }
+            ]
+        }
+    ]);
+
+    const handleCalculatorNameChange = (event) => {
+        const updatedSections = [...sections];
+        updatedSections[0].calculator.calculatorName = event.target.value;
+        setSections(updatedSections);
+    };
+
+    const handleDescriptionChange = (event) => {
+        const updatedSections = [...sections];
+        updatedSections[0].calculator.description = event.target.value;
+        setSections(updatedSections);
+    };
+
+    const handleTypeChange = (event) => {
+        const updatedSections = [...sections];
+        updatedSections[0].calculator.type = event.target.value;
+        setSections(updatedSections);
+    };
 
     const handleNameChange = (index, event) => {
         const updatedSections = [...sections];
-        updatedSections[index].name = event.target.value;
+        updatedSections[0].fields[index].name = event.target.value;
         setSections(updatedSections);
     };
 
     const handleValueChange = (index, event) => {
         const updatedSections = [...sections];
-        updatedSections[index].value = event.target.value;
+        updatedSections[0].fields[index].value = event.target.value;
         setSections(updatedSections);
     };
 
-    const handleAddSection = () => {
-        setSections([...sections, { name: '', value: 0 }]);
-    };
-
-    const handleRemoveSection = (index) => {
+    const handleAddSection = (event) => {
+        event.preventDefault();
         const updatedSections = [...sections];
-        updatedSections.splice(index, 1);
+        updatedSections[0].fields.push({
+            name: '',
+            value: ''
+        });
         setSections(updatedSections);
     };
 
-    const handleConsole = () => {
-        console.log(sections);
+    const handleRemoveSection = (index, event) => {
+        event.preventDefault();
+        if (index === 0 && sections[0].fields.length === 1) {
+            return; // Prevent removing the first field if it's the only one
+        }
+        const updatedSections = [...sections];
+        updatedSections[0].fields.splice(index, 1);
+        setSections(updatedSections);
+    };
+
+    const handleSave = () => {
+        let data = {
+            'action': 'ascode_save_calculator_info_action',
+            'calculatorInfo': sections,
+            // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+        };
+
+        jQuery.post(ajaxurl, data, (response) => {
+            if(response.success){
+                navigate('/');
+            }
+            console.log(response.success);
+            alert(response.data.message);
+        });
     }
     return (
-        <div className='bg-white p-2 rounded'>
-            <div className="px-4 sm:px-0">
-                <h3 className="text-base font-semibold leading-7 text-gray-900">Add New Calculator</h3>
-                {/* <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p> */}
-            </div>
-            <div className="mt-6 border-t border-gray-100">
-                <dl className="divide-y divide-gray-100">
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Calculator Name</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+        <div className='bg-white p-6 rounded'>
+            <div className='max-w-3xl mx-auto'>
+                <div className="min-w-0 flex-1 border p-5 mb-5 rounded">
+                    <h5 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-xl sm:tracking-tight">
+                        Add New Calculator
+                    </h5>
+                </div>
+                <form className='border p-5 rounded'>
+                    <div className='mt-3'>
+                        <div className="flex justify-between">
+                            <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
+                                Name
+                            </label>
+                            <span className="text-sm leading-6 text-gray-500" id="name-optional">
+                                Required
+                            </span>
+                        </div>
+                        <div className="mt-2">
                             <input
                                 type="text"
-                                name="calculatorName"
-                                id="calculatorName"
-                                className="block w-96 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="Canculator Name"
-                                aria-describedby="email-optional"
+                                name="name"
+                                id="name"
+                                className="form-input block w-full rounded-md border-0 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="Put calculator name here"
+                                aria-describedby=""
+                                value={sections[0].calculator.calculatorName}
+                                onChange={handleCalculatorNameChange}
                             />
-                        </dd>
+                        </div>
                     </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Description</dt>
+                    <div className='mt-4'>
+                        <div className="flex justify-between">
+                            <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
+                                Description
+                            </label>
+                            <span className="text-sm leading-6 text-gray-500" id="email-optional">
+                                Optional
+                            </span>
+                        </div>
                         <div className="mt-2">
                             <textarea
-                                rows={4}
-                                name="comment"
-                                id="comment"
-                                className="block w-96 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                defaultValue={''}
+                                type="text"
+                                name="description"
+                                id="description"
+                                className="block w-full rounded-md border-0 p-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="you can write something"
+                                aria-describedby=""
+                                value={sections[0].calculator.description}
+                                onChange={handleDescriptionChange}
                             />
                         </div>
                     </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Description</dt>
-                        <div>
-                            {sections.map((section, index) => (
-                                <div key={index} className='flex'>
-                                    <input
-                                        type="text"
-                                        value={section.name}
-                                        onChange={(event) => handleNameChange(index, event)}
-                                    />
-                                    <input
-                                        type="text"
-                                        value={section.value}
-                                        onChange={(event) => handleValueChange(index, event)}
-                                    />
-                                    <button onClick={() => handleRemoveSection(index)}>Remove</button>
+                    <div className='mt-4'>
+                        <div className="flex justify-between">
+                            <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
+                                Fields
+                            </label>
+                        </div>
+                        <div className="mt-2">
+                            {sections[0].fields.map((field, index) => (
+                                <div key={index} className='flex mt-4'>
+                                    <div className="relative mr-2">
+                                        <label
+                                            htmlFor="name"
+                                            className="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900"
+                                        >
+                                            Input {index + 1} name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            id="name"
+                                            className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            // placeholder={`Input ${index + 1} Name`}
+                                            value={field.name}
+                                            onChange={(event) => handleNameChange(index, event)}
+                                        />
+                                    </div>
+                                    <div className="relative mr-2">
+                                        <label
+                                            htmlFor="value"
+                                            className="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900"
+                                        >
+                                            Input {index + 1} value
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="value"
+                                            id="value"
+                                            className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            // placeholder={`Input ${index + 1} Value`}
+                                            value={field.value}
+                                            onChange={(event) => handleValueChange(index, event)}
+                                        />
+                                    </div>
+                                    <button
+                                        onClick={() => handleRemoveSection(index, event)}
+                                        className="rounded-2xl bg-red-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    ><TrashIcon className="h-6 w-6 text-red-500" /></button>
                                 </div>
                             ))}
-                            <button onClick={handleAddSection}>Add</button>
-                            <button onClick={handleConsole}>Console</button>
+                            <button
+                                onClick={() => handleAddSection(event)}
+                                className="rounded-md bg-indigo-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            >Add Field</button>
                         </div>
                     </div>
-                </dl>
+                </form>
+                <div className='border mt-4'></div>
+                <button
+                    onClick={handleSave}
+                    className="rounded-md mt-4 bg-green-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >Save Calculator</button>
             </div>
         </div>
     )

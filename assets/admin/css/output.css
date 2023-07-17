@@ -579,8 +579,6 @@ video {
   flex: 1 1 0%;
 }.table-fixed {
   table-layout: fixed;
-}.items-center {
-  align-items: center;
 }.justify-center {
   justify-content: center;
 }.justify-between {
