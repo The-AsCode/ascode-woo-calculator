@@ -10,23 +10,20 @@ const CalculatorList = () => {
   useEffect(() => {
     let data = {
       'action': 'ascode_load_calculator_info_action',
-      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
     };
 
     jQuery.post(ajaxurl, data, (response) => {
-      console.log(response.data);
       setData(response.data);
-      // alert(response.data.message);
     });
 
   }, []);
 
   const handleDeleteCalculator = ( calculatorId ) => {
-    console.log(calculatorId);
     let data = {
       'action': 'ascode_delete_calculator_action',
       'calculatorId' : calculatorId,
-      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
     };
 
     jQuery.post(ajaxurl, data, (response) => {

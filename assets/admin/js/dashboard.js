@@ -4138,15 +4138,13 @@ function AddNewCalculator() {
   var handleSave = function handleSave() {
     var data = {
       'action': 'ascode_save_calculator_info_action',
-      'calculatorInfo': sections
-      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+      'calculatorInfo': sections,
+      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
     };
-
     jQuery.post(ajaxurl, data, function (response) {
       if (response.success) {
         navigate('/');
       }
-      console.log(response.success);
       alert(response.data.message);
     });
   };
@@ -4331,24 +4329,19 @@ var CalculatorList = function CalculatorList() {
     setData = _useState2[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
-      'action': 'ascode_load_calculator_info_action'
-      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+      'action': 'ascode_load_calculator_info_action',
+      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
     };
-
     jQuery.post(ajaxurl, data, function (response) {
-      console.log(response.data);
       setData(response.data);
-      // alert(response.data.message);
     });
   }, []);
   var handleDeleteCalculator = function handleDeleteCalculator(calculatorId) {
-    console.log(calculatorId);
     var data = {
       'action': 'ascode_delete_calculator_action',
-      'calculatorId': calculatorId
-      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+      'calculatorId': calculatorId,
+      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
     };
-
     jQuery.post(ajaxurl, data, function (response) {
       setData(response.data.data);
       alert(response.data.message);

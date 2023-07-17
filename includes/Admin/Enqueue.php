@@ -21,7 +21,7 @@ class Enqueue
         wp_enqueue_style('ascode-woo-calculator-css', ASC_WOO_CALCULATOR_ASSETS . '/admin/css/output.css');
         if ($page === 'toplevel_page_ascode-woo-calculator') {
             wp_enqueue_script('ascode-woo-calculator-dashboard', ASC_WOO_CALCULATOR_ASSETS . '/admin/js/dashboard.js', [], false, true);
-            wp_localize_script('ascode_woo_calculator_dashboard', 'ascodeWooCalculatorDashboard',  $this->dashboard_data());
+            wp_localize_script('ascode-woo-calculator-dashboard', 'ascodeWooCalculatorDashboard',  $this->dashboard_data());
         }
     }
 
@@ -31,7 +31,7 @@ class Enqueue
     private function dashboard_data()
     {
         return [
-            'nonce'  => wp_create_nonce('ascode-calculator-save-data'),
+            'nonce'  => wp_create_nonce('ascode-calculator-admin-nonce'),
         ];
     }
 }

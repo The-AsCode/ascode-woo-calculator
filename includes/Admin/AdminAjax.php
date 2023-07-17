@@ -24,7 +24,7 @@ class AdminAjax
      */
     public function ascode_save_calculator_info_action()
     {
-        // check_ajax_referer('ascode-calculator-save-data');
+         check_ajax_referer('ascode-calculator-admin-nonce');
 
         /**
          * Recursive function to sanitize multidimensional array values.
@@ -81,6 +81,7 @@ class AdminAjax
      */
     public function ascode_load_calculator_info_action()
     {
+        check_ajax_referer('ascode-calculator-admin-nonce');
         $calculator_list = get_posts([
             'post_type' => 'calculator',
             'posts_per_page' => -1,
@@ -118,8 +119,9 @@ class AdminAjax
      * @return void
      */
     public function ascode_delete_calculator_action(){
-        $post_id = intval( $_POST['calculatorId'] );
+        check_ajax_referer('ascode-calculator-admin-nonce');
 
+        $post_id = intval( $_POST['calculatorId'] );
         wp_delete_post( $post_id );
 
         $calculator_list = get_posts([

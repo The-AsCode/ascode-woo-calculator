@@ -74,14 +74,13 @@ export default function AddNewCalculator() {
         let data = {
             'action': 'ascode_save_calculator_info_action',
             'calculatorInfo': sections,
-            // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+            '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
         };
 
         jQuery.post(ajaxurl, data, (response) => {
             if(response.success){
                 navigate('/');
             }
-            console.log(response.success);
             alert(response.data.message);
         });
     }
