@@ -21,6 +21,21 @@ const CalculatorList = () => {
 
   }, []);
 
+  const handleDeleteCalculator = ( calculatorId ) => {
+    console.log(calculatorId);
+    let data = {
+      'action': 'ascode_delete_calculator_action',
+      'calculatorId' : calculatorId,
+      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+    };
+
+    jQuery.post(ajaxurl, data, (response) => {
+      setData(response.data.data);
+      alert(response.data.message);
+    });
+  }
+
+
   return (
     // <div className='m-2 p-2	border border-gray-600 rounded'>
     <div className='bg-white p-6 rounded'>
@@ -57,7 +72,7 @@ const CalculatorList = () => {
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{row.shortcode}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                           <button
-                            // onClick={() => handleRemoveSection(index, event)}
+                            onClick = {(e)=> handleDeleteCalculator(row.id)}
                             className="rounded-2xl bg-red-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                           >
                             <TrashIcon className="h-5 w-5 text-red-500" />

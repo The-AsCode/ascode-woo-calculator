@@ -4341,6 +4341,19 @@ var CalculatorList = function CalculatorList() {
       // alert(response.data.message);
     });
   }, []);
+  var handleDeleteCalculator = function handleDeleteCalculator(calculatorId) {
+    console.log(calculatorId);
+    var data = {
+      'action': 'ascode_delete_calculator_action',
+      'calculatorId': calculatorId
+      // '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+    };
+
+    jQuery.post(ajaxurl, data, function (response) {
+      setData(response.data.data);
+      alert(response.data.message);
+    });
+  };
   return (
     /*#__PURE__*/
     // <div className='m-2 p-2	border border-gray-600 rounded'>
@@ -4417,7 +4430,9 @@ var CalculatorList = function CalculatorList() {
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
                           className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500",
                           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-                            // onClick={() => handleRemoveSection(index, event)}
+                            onClick: function onClick(e) {
+                              return handleDeleteCalculator(row.id);
+                            },
                             className: "rounded-2xl bg-red-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
                             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_3__["default"], {
                               className: "h-5 w-5 text-red-500"

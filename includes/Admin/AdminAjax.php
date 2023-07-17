@@ -14,6 +14,7 @@ class AdminAjax
     {
         add_action('wp_ajax_ascode_save_calculator_info_action', [$this, 'ascode_save_calculator_info_action']);
         add_action('wp_ajax_ascode_load_calculator_info_action', [$this, 'ascode_load_calculator_info_action']);
+        add_action('wp_ajax_ascode_delete_calculator_action', [$this, 'ascode_delete_calculator_action']);
     }
 
     /**
@@ -109,5 +110,49 @@ class AdminAjax
         }
 
         wp_send_json_success($calculator_list_array);
+    }
+
+    /**
+     * Delete calculator
+     *
+     * @return void
+     */
+    public function ascode_delete_calculator_action(){
+        $post_id = intval( $_POST['calculatorId'] );
+
+        wp_delete_post( $post_id );
+
+        $calculator_list = get_posts([
+            'post_type' => 'calculator',
+            'posts_per_page' => -1,
+        ]);
+
+        $calculator_list_array = [];
+
+        foreach ($calculator_list as $calculator) {
+            $calculator_id = $calculator->ID;
+            $calculator_shortcode = '[woo-calculator id=' . $calculator_id . ']';
+            $calculator_view_data = [
+                'id'            => $calculator_id,
+                'name'          => '',
+                'description'   => '',
+                'shortcode'     => ''
+            ];
+            $calculator_info = maybe_unserialize($calculator->post_content);
+            $calculator_info_list = $calculator_info['calculatorInfo'];
+
+            foreach ($calculator_info_list as $calculator_info) {
+                $calculator_view_data['name'] = $calculator_info['calculator']['calculatorName'];
+                $calculator_view_data['description'] = $calculator_info['calculator']['description'];
+                $calculator_view_data['shortcode'] = $calculator_shortcode;
+            }
+
+            $calculator_list_array[] = $calculator_view_data;
+        }
+
+        wp_send_json_success([
+            'data' => $calculator_list_array,
+            'message'   => 'Deleted Successfully'
+        ]);
     }
 }
