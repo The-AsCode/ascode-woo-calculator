@@ -1,89 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrashIcon } from "@heroicons/react/24/outline";
+import {useDispatch, useSelector} from "react-redux";
+import {handleCalculatorNameChange, handleDescriptionChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection, handleSave} from "../calculatorSlice";
 
 export default function AddNewCalculator() {
     const navigate = useNavigate();
-    const [sections, setSections] = useState([
-        {
-            calculator: {
-                calculatorName: '',
-                description: '',
-                inputType: ''
-            },
-            fields: [
-                {
-                    name: '',
-                    value: ''
-                }
-            ]
-        }
-    ]);
+    const uniqueId = Date.now();
+    const calculatorName = useSelector(state => state.calculator.calculator.calculatorName);
+    const calculatorDescription = useSelector(state => state.calculator.calculator.description);
+    const fields = useSelector(state => state.calculator.fields);
+    const dispatch = useDispatch();
 
-    const handleCalculatorNameChange = (event) => {
-        const updatedSections = [...sections];
-        updatedSections[0].calculator.calculatorName = event.target.value;
-        setSections(updatedSections);
-    };
-
-    const handleDescriptionChange = (event) => {
-        const updatedSections = [...sections];
-        updatedSections[0].calculator.description = event.target.value;
-        setSections(updatedSections);
-    };
-
-    const handleTypeChange = (event) => {
-        const updatedSections = [...sections];
-        updatedSections[0].calculator.type = event.target.value;
-        setSections(updatedSections);
-    };
-
-    const handleNameChange = (index, event) => {
-        const updatedSections = [...sections];
-        updatedSections[0].fields[index].name = event.target.value;
-        setSections(updatedSections);
-    };
-
-    const handleValueChange = (index, event) => {
-        const updatedSections = [...sections];
-        updatedSections[0].fields[index].value = event.target.value;
-        setSections(updatedSections);
-    };
-
-    const handleAddSection = (event) => {
-        event.preventDefault();
-        const updatedSections = [...sections];
-        updatedSections[0].fields.push({
-            name: '',
-            value: ''
-        });
-        setSections(updatedSections);
-    };
-
-    const handleRemoveSection = (index, event) => {
-        event.preventDefault();
-        if (index === 0 && sections[0].fields.length === 1) {
-            return; // Prevent removing the first field if it's the only one
-        }
-        const updatedSections = [...sections];
-        updatedSections[0].fields.splice(index, 1);
-        setSections(updatedSections);
-    };
-
-    const handleSave = () => {
-        let data = {
-            'action': 'ascode_save_calculator_info_action',
-            'calculatorInfo': sections,
-            '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
-        };
-
-        jQuery.post(ajaxurl, data, (response) => {
-            if(response.success){
-                navigate('/');
-            }
-            alert(response.data.message);
-        });
-    }
     return (
         <div className='bg-white p-6 rounded'>
             <div className='max-w-3xl mx-auto'>
@@ -110,8 +38,8 @@ export default function AddNewCalculator() {
                                 className="form-input block w-full rounded-md border-0 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 placeholder="Put calculator name here"
                                 aria-describedby=""
-                                value={sections[0].calculator.calculatorName}
-                                onChange={handleCalculatorNameChange}
+                                value={calculatorName}
+                                onChange={(e) => dispatch(handleCalculatorNameChange(e.target.value))}
                             />
                         </div>
                     </div>
@@ -132,8 +60,8 @@ export default function AddNewCalculator() {
                                 className="block w-full rounded-md border-0 p-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 placeholder="you can write something"
                                 aria-describedby=""
-                                value={sections[0].calculator.description}
-                                onChange={handleDescriptionChange}
+                                value={calculatorDescription}
+                                onChange={(e) => dispatch(handleDescriptionChange(e.target.value))}
                             />
                         </div>
                     </div>
@@ -144,8 +72,8 @@ export default function AddNewCalculator() {
                             </label>
                         </div>
                         <div className="mt-2">
-                            {sections[0].fields.map((field, index) => (
-                                <div key={index} className='flex mt-4'>
+                            {fields.map((field, index) => (
+                                <div key={field.id} className='flex mt-4'>
                                     <div className="relative mr-2">
                                         <label
                                             htmlFor="name"
@@ -160,7 +88,7 @@ export default function AddNewCalculator() {
                                             className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             // placeholder={`Input ${index + 1} Name`}
                                             value={field.name}
-                                            onChange={(event) => handleNameChange(index, event)}
+                                            onChange={(e) => dispatch(handleNameChange({id: field.id,value:e.target.value}))}
                                         />
                                     </div>
                                     <div className="relative mr-2">
@@ -177,17 +105,23 @@ export default function AddNewCalculator() {
                                             className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             // placeholder={`Input ${index + 1} Value`}
                                             value={field.value}
-                                            onChange={(event) => handleValueChange(index, event)}
+                                            onChange={(e) => dispatch(handleValueChange({id:field.id,value:e.target.value}))}
                                         />
                                     </div>
                                     <button
-                                        onClick={() => handleRemoveSection(index, event)}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            dispatch(handleRemoveSection(field.id))
+                                        }}
                                         className="rounded-2xl bg-red-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     ><TrashIcon className="h-6 w-6 text-red-500" /></button>
                                 </div>
                             ))}
                             <button
-                                onClick={() => handleAddSection(event)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    dispatch(handleAddSection(uniqueId))
+                                }}
                                 className="rounded-md bg-indigo-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >Add Field</button>
                         </div>
@@ -195,7 +129,10 @@ export default function AddNewCalculator() {
                 </form>
                 <div className='border mt-4'></div>
                 <button
-                    onClick={handleSave}
+                    onClick={(e)=>{
+                        e.preventDefault();
+                        dispatch(handleSave())
+                    }}
                     className="rounded-md mt-4 bg-green-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >Save Calculator</button>
             </div>
