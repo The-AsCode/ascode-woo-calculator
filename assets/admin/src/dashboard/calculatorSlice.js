@@ -67,25 +67,25 @@ export const calculatorSlice = createSlice({
             }
             state.fields = state.fields.filter(item=>item.id !== index.payload);
         },
-        handleSave: (state, {navigate}) => {
-            console.log(navigate);
-            let data = {
-                'action': 'ascode_save_calculator_info_action',
-                'calculatorInfo': [state],
-                '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
-            };
-
-            jQuery.post(ajaxurl, data, (response) => {
-                // const navigate = useNavigate();
-                // if(response.success){
-                //     navigate('/');
-                // }
-                alert(response.data.message);
-            });
-        }
+        // handleSave: (state, {navigate}) => {
+        //     console.log(navigate);
+        //     let data = {
+        //         'action': 'ascode_save_calculator_info_action',
+        //         'calculatorInfo': [state],
+        //         '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+        //     };
+        //
+        //     jQuery.post(ajaxurl, data, (response) => {
+        //         // const navigate = useNavigate();
+        //         // if(response.success){
+        //         //     navigate('/');
+        //         // }
+        //         alert(response.data.message);
+        //     });
+        // }
     }
 
 })
 
-export const { handleCalculatorNameChange, handleDescriptionChange,handleTypeChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection, handleSave } = calculatorSlice.actions;
+export const { handleCalculatorNameChange, handleDescriptionChange,handleTypeChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection } = calculatorSlice.actions;
 export default calculatorSlice.reducer;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrashIcon } from "@heroicons/react/24/outline";
 import {useDispatch, useSelector} from "react-redux";
-import {handleCalculatorNameChange, handleDescriptionChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection, handleSave} from "../calculatorSlice";
+import {handleCalculatorNameChange, handleDescriptionChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection} from "../calculatorSlice";
 
 export default function AddNewCalculator() {
     const navigate = useNavigate();
@@ -10,7 +10,24 @@ export default function AddNewCalculator() {
     const calculatorName = useSelector(state => state.calculator.calculator.calculatorName);
     const calculatorDescription = useSelector(state => state.calculator.calculator.description);
     const fields = useSelector(state => state.calculator.fields);
+    const finalData = useSelector(state => state.calculator);
     const dispatch = useDispatch();
+
+    const handleSave = (e) => {
+        e.preventDefault();
+        let data = {
+            'action': 'ascode_save_calculator_info_action',
+            'calculatorInfo': [finalData],
+            '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+        };
+
+        jQuery.post(ajaxurl, data, (response) => {
+            if(response.success){
+                navigate('/');
+            }
+            alert(response.data.message);
+        });
+    }
 
     return (
         <div className='bg-white p-6 rounded'>
@@ -129,10 +146,7 @@ export default function AddNewCalculator() {
                 </form>
                 <div className='border mt-4'></div>
                 <button
-                    onClick={(e)=>{
-                        e.preventDefault();
-                        dispatch(handleSave())
-                    }}
+                    onClick={handleSave}
                     className="rounded-md mt-4 bg-green-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >Save Calculator</button>
             </div>

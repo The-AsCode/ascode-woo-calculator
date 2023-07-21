@@ -6165,7 +6165,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   handleDescriptionChange: () => (/* binding */ handleDescriptionChange),
 /* harmony export */   handleNameChange: () => (/* binding */ handleNameChange),
 /* harmony export */   handleRemoveSection: () => (/* binding */ handleRemoveSection),
-/* harmony export */   handleSave: () => (/* binding */ handleSave),
 /* harmony export */   handleTypeChange: () => (/* binding */ handleTypeChange),
 /* harmony export */   handleValueChange: () => (/* binding */ handleValueChange)
 /* harmony export */ });
@@ -6241,25 +6240,26 @@ var calculatorSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSli
       state.fields = state.fields.filter(function (item) {
         return item.id !== index.payload;
       });
-    },
-    handleSave: function handleSave(state, _ref2) {
-      var navigate = _ref2.navigate;
-      console.log(navigate);
-      var data = {
-        'action': 'ascode_save_calculator_info_action',
-        'calculatorInfo': [state],
-        '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
-      };
-      jQuery.post(ajaxurl, data, function (response) {
-        // const navigate = useNavigate();
-        // if(response.success){
-        //     navigate('/');
-        // }
-        alert(response.data.message);
-      });
     }
+    // handleSave: (state, {navigate}) => {
+    //     console.log(navigate);
+    //     let data = {
+    //         'action': 'ascode_save_calculator_info_action',
+    //         'calculatorInfo': [state],
+    //         '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
+    //     };
+    //
+    //     jQuery.post(ajaxurl, data, (response) => {
+    //         // const navigate = useNavigate();
+    //         // if(response.success){
+    //         //     navigate('/');
+    //         // }
+    //         alert(response.data.message);
+    //     });
+    // }
   }
 });
+
 var _calculatorSlice$acti = calculatorSlice.actions,
   handleCalculatorNameChange = _calculatorSlice$acti.handleCalculatorNameChange,
   handleDescriptionChange = _calculatorSlice$acti.handleDescriptionChange,
@@ -6267,8 +6267,7 @@ var _calculatorSlice$acti = calculatorSlice.actions,
   handleNameChange = _calculatorSlice$acti.handleNameChange,
   handleValueChange = _calculatorSlice$acti.handleValueChange,
   handleAddSection = _calculatorSlice$acti.handleAddSection,
-  handleRemoveSection = _calculatorSlice$acti.handleRemoveSection,
-  handleSave = _calculatorSlice$acti.handleSave;
+  handleRemoveSection = _calculatorSlice$acti.handleRemoveSection;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calculatorSlice.reducer);
 
@@ -6311,7 +6310,24 @@ function AddNewCalculator() {
   var fields = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.calculator.fields;
   });
+  var finalData = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.calculator;
+  });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var handleSave = function handleSave(e) {
+    e.preventDefault();
+    var data = {
+      'action': 'ascode_save_calculator_info_action',
+      'calculatorInfo': [finalData],
+      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
+    };
+    jQuery.post(ajaxurl, data, function (response) {
+      if (response.success) {
+        navigate('/');
+      }
+      alert(response.data.message);
+    });
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "bg-white p-6 rounded",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -6460,10 +6476,7 @@ function AddNewCalculator() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "border mt-4"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-        onClick: function onClick(e) {
-          e.preventDefault();
-          dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_2__.handleSave)());
-        },
+        onClick: handleSave,
         className: "rounded-md mt-4 bg-green-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
         children: "Save Calculator"
       })]
