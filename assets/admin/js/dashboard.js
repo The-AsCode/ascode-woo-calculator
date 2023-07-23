@@ -6166,6 +6166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   handleNameChange: () => (/* binding */ handleNameChange),
 /* harmony export */   handleRemoveSection: () => (/* binding */ handleRemoveSection),
 /* harmony export */   handleTypeChange: () => (/* binding */ handleTypeChange),
+/* harmony export */   handleUpdateCalculator: () => (/* binding */ handleUpdateCalculator),
 /* harmony export */   handleValueChange: () => (/* binding */ handleValueChange)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
@@ -6240,26 +6241,13 @@ var calculatorSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSli
       state.fields = state.fields.filter(function (item) {
         return item.id !== index.payload;
       });
+    },
+    handleUpdateCalculator: function handleUpdateCalculator(state, _ref2) {
+      var payload = _ref2.payload;
+      state = Object.assign(state, payload);
     }
-    // handleSave: (state, {navigate}) => {
-    //     console.log(navigate);
-    //     let data = {
-    //         'action': 'ascode_save_calculator_info_action',
-    //         'calculatorInfo': [state],
-    //         '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
-    //     };
-    //
-    //     jQuery.post(ajaxurl, data, (response) => {
-    //         // const navigate = useNavigate();
-    //         // if(response.success){
-    //         //     navigate('/');
-    //         // }
-    //         alert(response.data.message);
-    //     });
-    // }
   }
 });
-
 var _calculatorSlice$acti = calculatorSlice.actions,
   handleCalculatorNameChange = _calculatorSlice$acti.handleCalculatorNameChange,
   handleDescriptionChange = _calculatorSlice$acti.handleDescriptionChange,
@@ -6267,7 +6255,8 @@ var _calculatorSlice$acti = calculatorSlice.actions,
   handleNameChange = _calculatorSlice$acti.handleNameChange,
   handleValueChange = _calculatorSlice$acti.handleValueChange,
   handleAddSection = _calculatorSlice$acti.handleAddSection,
-  handleRemoveSection = _calculatorSlice$acti.handleRemoveSection;
+  handleRemoveSection = _calculatorSlice$acti.handleRemoveSection,
+  handleUpdateCalculator = _calculatorSlice$acti.handleUpdateCalculator;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calculatorSlice.reducer);
 
@@ -6665,16 +6654,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _AddNewCalculator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddNewCalculator */ "./assets/admin/src/dashboard/components/AddNewCalculator.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _calculatorSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../calculatorSlice */ "./assets/admin/src/dashboard/calculatorSlice.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
 
 function EditCalculator() {
-  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)(),
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)(),
     id = _useParams.id;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
       'action': 'ascode_load_calculator_get_info_action',
@@ -6682,10 +6676,10 @@ function EditCalculator() {
       '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
     };
     jQuery.post(ajaxurl, data, function (response) {
-      console.log(response.data);
+      dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleUpdateCalculator)(response.data));
     });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_AddNewCalculator__WEBPACK_IMPORTED_MODULE_1__["default"], {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNewCalculator__WEBPACK_IMPORTED_MODULE_1__["default"], {});
 }
 
 /***/ }),

@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import AddNewCalculator from './AddNewCalculator';
+import { useDispatch, useSelector } from "react-redux";
+import { handleUpdateCalculator } from '../calculatorSlice';
+
 
 export default function EditCalculator() {
     const { id } = useParams();
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let data = {
@@ -13,7 +18,7 @@ export default function EditCalculator() {
         };
 
         jQuery.post(ajaxurl, data, (response) => {
-            console.log(response.data);
+            dispatch(handleUpdateCalculator(response.data));
         });
 
     }, []);

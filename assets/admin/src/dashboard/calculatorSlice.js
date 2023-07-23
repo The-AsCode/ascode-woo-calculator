@@ -2,37 +2,37 @@ import { createSlice } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 
 
-let initialState ={
-        calculator: {
-            calculatorName: 'test calculator',
-            description: 'description',
-            inputType: ''
-        },
-        fields: [
-            {
-                id: 1,
-                name: 'asdf',
-                value: 'dasfad'
-            }
-        ]
-    };
+let initialState = {
+    calculator: {
+        calculatorName: 'test calculator',
+        description: 'description',
+        inputType: ''
+    },
+    fields: [
+        {
+            id: 1,
+            name: 'asdf',
+            value: 'dasfad'
+        }
+    ]
+};
 
 export const calculatorSlice = createSlice({
     name: 'calculator',
     initialState,
     reducers: {
-        handleCalculatorNameChange : ( state, e) => {
+        handleCalculatorNameChange: (state, e) => {
             state.calculator.calculatorName = e.payload;
         },
-        handleDescriptionChange : ( state, e) => {
+        handleDescriptionChange: (state, e) => {
             state.calculator.description = e.payload;
         },
-        handleTypeChange : ( state, e) => {
+        handleTypeChange: (state, e) => {
             state.calculator.description = e.payload;
         },
-        handleNameChange : ( state, e) => {
-            state.fields = state.fields.map(item=>{
-                if(item.id === e.payload.id) {
+        handleNameChange: (state, e) => {
+            state.fields = state.fields.map(item => {
+                if (item.id === e.payload.id) {
                     return {
                         ...item,
                         name: e.payload.value
@@ -42,50 +42,37 @@ export const calculatorSlice = createSlice({
                 }
             })
         },
-        handleValueChange : ( state, e) => {
-            state.fields = state.fields.map(item=>{
-                if(item.id === e.payload.id) {
+        handleValueChange: (state, e) => {
+            state.fields = state.fields.map(item => {
+                if (item.id === e.payload.id) {
                     return {
                         ...item,
-                        value : e.payload.value
+                        value: e.payload.value
                     }
                 } else {
                     return item;
                 }
             })
         },
-        handleAddSection : ( state, {payload}) => {
+        handleAddSection: (state, { payload }) => {
             state.fields.push({
                 id: payload,
                 name: '',
                 value: ''
             });
         },
-        handleRemoveSection : ( state, index) => {
+        handleRemoveSection: (state, index) => {
             if (state.fields.length === 1) {
                 return; // Prevent removing the first field if it's the only one
             }
-            state.fields = state.fields.filter(item=>item.id !== index.payload);
+            state.fields = state.fields.filter(item => item.id !== index.payload);
         },
-        // handleSave: (state, {navigate}) => {
-        //     console.log(navigate);
-        //     let data = {
-        //         'action': 'ascode_save_calculator_info_action',
-        //         'calculatorInfo': [state],
-        //         '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
-        //     };
-        //
-        //     jQuery.post(ajaxurl, data, (response) => {
-        //         // const navigate = useNavigate();
-        //         // if(response.success){
-        //         //     navigate('/');
-        //         // }
-        //         alert(response.data.message);
-        //     });
-        // }
+        handleUpdateCalculator: (state, { payload }) => {
+            state = Object.assign(state, payload);
+        }
     }
 
 })
 
-export const { handleCalculatorNameChange, handleDescriptionChange,handleTypeChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection } = calculatorSlice.actions;
+export const { handleCalculatorNameChange, handleDescriptionChange, handleTypeChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection, handleUpdateCalculator } = calculatorSlice.actions;
 export default calculatorSlice.reducer;
