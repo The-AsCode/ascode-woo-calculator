@@ -6624,7 +6624,7 @@ var CalculatorList = function CalculatorList() {
                               className: "h-5 w-5 text-red-500"
                             })
                           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                            to: '/edit-calulator/:' + row.id,
+                            to: '/edit-calulator/' + row.id,
                             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
                               // onClick={() => handleRemoveSection(index, event)}
                               className: "rounded-2xl bg-blue-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
@@ -6675,6 +6675,16 @@ __webpack_require__.r(__webpack_exports__);
 function EditCalculator() {
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)(),
     id = _useParams.id;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var data = {
+      'action': 'ascode_load_calculator_get_info_action',
+      'id': id,
+      '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
+    };
+    jQuery.post(ajaxurl, data, function (response) {
+      console.log(response.data);
+    });
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_AddNewCalculator__WEBPACK_IMPORTED_MODULE_1__["default"], {});
 }
 

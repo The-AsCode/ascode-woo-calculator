@@ -74,7 +74,7 @@ const CalculatorList = () => {
                           >
                             <TrashIcon className="h-5 w-5 text-red-500" />
                           </button>
-                          <Link to={'/edit-calulator/:' + row.id}>
+                          <Link to={'/edit-calulator/' + row.id}>
                             <button
                               // onClick={() => handleRemoveSection(index, event)}
                               className="rounded-2xl bg-blue-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

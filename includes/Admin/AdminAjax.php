@@ -15,6 +15,7 @@ class AdminAjax
         add_action('wp_ajax_ascode_save_calculator_info_action', [$this, 'ascode_save_calculator_info_action']);
         add_action('wp_ajax_ascode_load_calculator_info_action', [$this, 'ascode_load_calculator_info_action']);
         add_action('wp_ajax_ascode_delete_calculator_action', [$this, 'ascode_delete_calculator_action']);
+        add_action('wp_ajax_ascode_load_calculator_get_info_action', [$this, 'ascode_load_calculator_get_info_action']);
     }
 
     /**
@@ -24,7 +25,7 @@ class AdminAjax
      */
     public function ascode_save_calculator_info_action()
     {
-         check_ajax_referer('ascode-calculator-admin-nonce');
+        check_ajax_referer('ascode-calculator-admin-nonce');
 
         /**
          * Recursive function to sanitize multidimensional array values.
@@ -111,6 +112,8 @@ class AdminAjax
         }
 
         wp_send_json_success($calculator_list_array);
+
+        wp_die();
     }
 
     /**
@@ -118,11 +121,12 @@ class AdminAjax
      *
      * @return void
      */
-    public function ascode_delete_calculator_action(){
+    public function ascode_delete_calculator_action()
+    {
         check_ajax_referer('ascode-calculator-admin-nonce');
 
-        $post_id = intval( $_POST['calculatorId'] );
-        wp_delete_post( $post_id );
+        $post_id = intval($_POST['calculatorId']);
+        wp_delete_post($post_id);
 
         $calculator_list = get_posts([
             'post_type' => 'calculator',
@@ -156,5 +160,23 @@ class AdminAjax
             'data' => $calculator_list_array,
             'message'   => 'Deleted Successfully'
         ]);
+
+        wp_die();
+    }
+
+    /**
+     * Data for edit calculator info
+     *
+     * @return void
+     */
+    public function ascode_load_calculator_get_info_action()
+    {
+        check_ajax_referer('ascode-calculator-admin-nonce');
+
+        $calculator_info = get_post(intval($_POST['id']))->post_content;
+
+        wp_send_json_success(maybe_unserialize($calculator_info)['calculatorInfo'][0]);
+
+        wp_die();
     }
 }
