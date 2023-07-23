@@ -16,6 +16,7 @@ class AdminAjax
         add_action('wp_ajax_ascode_load_calculator_info_action', [$this, 'ascode_load_calculator_info_action']);
         add_action('wp_ajax_ascode_delete_calculator_action', [$this, 'ascode_delete_calculator_action']);
         add_action('wp_ajax_ascode_load_calculator_get_info_action', [$this, 'ascode_load_calculator_get_info_action']);
+        add_action('wp_ajax_ascode_update_calculator_info_action', [$this, 'ascode_update_calculator_info_action']);
     }
 
     /**
@@ -176,6 +177,28 @@ class AdminAjax
         $calculator_info = get_post(intval($_POST['id']))->post_content;
 
         wp_send_json_success(maybe_unserialize($calculator_info)['calculatorInfo'][0]);
+
+        wp_die();
+    }
+
+    /**
+     * Update calculator function
+     *
+     * @return void
+     */
+    public function ascode_update_calculator_info_action()
+    {
+
+        $calculator_id = $_POST['calculatorInfo'][0]['edit']['calculatorId'];
+
+        wp_update_post([
+            'ID' => $calculator_id,
+            'post_content' => maybe_serialize($_POST)
+        ]);
+
+        wp_send_json_success([
+            'message' => 'Calculator Updated Successfully.',
+        ]);
 
         wp_die();
     }

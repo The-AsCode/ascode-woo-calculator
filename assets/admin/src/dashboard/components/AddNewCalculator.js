@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrashIcon } from "@heroicons/react/24/outline";
-import {useDispatch, useSelector} from "react-redux";
-import {handleCalculatorNameChange, handleDescriptionChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection} from "../calculatorSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { handleCalculatorNameChange, handleDescriptionChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection } from "../calculatorSlice";
 
 export default function AddNewCalculator() {
     const navigate = useNavigate();
     const uniqueId = Date.now();
+    const edit = useSelector(state => state.calculator.edit);
     const calculatorName = useSelector(state => state.calculator.calculator.calculatorName);
     const calculatorDescription = useSelector(state => state.calculator.calculator.description);
     const fields = useSelector(state => state.calculator.fields);
@@ -16,13 +17,13 @@ export default function AddNewCalculator() {
     const handleSave = (e) => {
         e.preventDefault();
         let data = {
-            'action': 'ascode_save_calculator_info_action',
+            'action': edit.action,
             'calculatorInfo': [finalData],
             '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
         };
 
         jQuery.post(ajaxurl, data, (response) => {
-            if(response.success){
+            if (response.success) {
                 navigate('/');
             }
             alert(response.data.message);
@@ -34,7 +35,7 @@ export default function AddNewCalculator() {
             <div className='max-w-3xl mx-auto'>
                 <div className="min-w-0 flex-1 border p-5 mb-5 rounded">
                     <h5 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-xl sm:tracking-tight">
-                        Add New Calculator
+                        {edit.page}
                     </h5>
                 </div>
                 <form className='border p-5 rounded'>
@@ -105,7 +106,7 @@ export default function AddNewCalculator() {
                                             className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             // placeholder={`Input ${index + 1} Name`}
                                             value={field.name}
-                                            onChange={(e) => dispatch(handleNameChange({id: field.id,value:e.target.value}))}
+                                            onChange={(e) => dispatch(handleNameChange({ id: field.id, value: e.target.value }))}
                                         />
                                     </div>
                                     <div className="relative mr-2">
@@ -122,7 +123,7 @@ export default function AddNewCalculator() {
                                             className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             // placeholder={`Input ${index + 1} Value`}
                                             value={field.value}
-                                            onChange={(e) => dispatch(handleValueChange({id:field.id,value:e.target.value}))}
+                                            onChange={(e) => dispatch(handleValueChange({ id: field.id, value: e.target.value }))}
                                         />
                                     </div>
                                     <button
@@ -148,7 +149,7 @@ export default function AddNewCalculator() {
                 <button
                     onClick={handleSave}
                     className="rounded-md mt-4 bg-green-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >Save Calculator</button>
+                >{edit.buttonText}</button>
             </div>
         </div>
     )

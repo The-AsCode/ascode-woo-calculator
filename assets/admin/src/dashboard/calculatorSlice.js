@@ -1,20 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useNavigate } from 'react-router-dom';
 
 
 let initialState = {
     calculator: {
-        calculatorName: 'test calculator',
-        description: 'description',
+        calculatorName: '',
+        description: '',
         inputType: ''
     },
     fields: [
         {
             id: 1,
-            name: 'asdf',
-            value: 'dasfad'
+            name: '',
+            value: ''
         }
-    ]
+    ],
+    edit: {
+        calculatorId: '',
+        buttonText: 'Save Calculator',
+        page: 'Add New Calculator',
+        action: 'ascode_save_calculator_info_action'
+    }
 };
 
 export const calculatorSlice = createSlice({
@@ -68,7 +73,11 @@ export const calculatorSlice = createSlice({
             state.fields = state.fields.filter(item => item.id !== index.payload);
         },
         handleUpdateCalculator: (state, { payload }) => {
-            state = Object.assign(state, payload);
+            state = Object.assign(state, payload[0]);
+            state.edit.page = 'Edit Calculator';
+            state.edit.buttonText = 'Update Calculator';
+            state.edit.action = 'ascode_update_calculator_info_action';
+            state.edit.calculatorId = payload[1];
         }
     }
 

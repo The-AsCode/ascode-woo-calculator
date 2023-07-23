@@ -6177,18 +6177,23 @@ function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key i
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
-
 var initialState = {
   calculator: {
-    calculatorName: 'test calculator',
-    description: 'description',
+    calculatorName: '',
+    description: '',
     inputType: ''
   },
   fields: [{
     id: 1,
-    name: 'asdf',
-    value: 'dasfad'
-  }]
+    name: '',
+    value: ''
+  }],
+  edit: {
+    calculatorId: '',
+    buttonText: 'Save Calculator',
+    page: 'Add New Calculator',
+    action: 'ascode_save_calculator_info_action'
+  }
 };
 var calculatorSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: 'calculator',
@@ -6244,7 +6249,11 @@ var calculatorSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSli
     },
     handleUpdateCalculator: function handleUpdateCalculator(state, _ref2) {
       var payload = _ref2.payload;
-      state = Object.assign(state, payload);
+      state = Object.assign(state, payload[0]);
+      state.edit.page = 'Edit Calculator';
+      state.edit.buttonText = 'Update Calculator';
+      state.edit.action = 'ascode_update_calculator_info_action';
+      state.edit.calculatorId = payload[1];
     }
   }
 });
@@ -6290,6 +6299,9 @@ __webpack_require__.r(__webpack_exports__);
 function AddNewCalculator() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   var uniqueId = Date.now();
+  var edit = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.calculator.edit;
+  });
   var calculatorName = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.calculator.calculator.calculatorName;
   });
@@ -6306,7 +6318,7 @@ function AddNewCalculator() {
   var handleSave = function handleSave(e) {
     e.preventDefault();
     var data = {
-      'action': 'ascode_save_calculator_info_action',
+      'action': edit.action,
       'calculatorInfo': [finalData],
       '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
     };
@@ -6325,7 +6337,7 @@ function AddNewCalculator() {
         className: "min-w-0 flex-1 border p-5 mb-5 rounded",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
           className: "text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-xl sm:tracking-tight",
-          children: "Add New Calculator"
+          children: edit.page
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
         className: "border p-5 rounded",
@@ -6467,7 +6479,7 @@ function AddNewCalculator() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         onClick: handleSave,
         className: "rounded-md mt-4 bg-green-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
-        children: "Save Calculator"
+        children: edit.buttonText
       })]
     })
   });
@@ -6655,8 +6667,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _AddNewCalculator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddNewCalculator */ "./assets/admin/src/dashboard/components/AddNewCalculator.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _AddNewCalculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddNewCalculator */ "./assets/admin/src/dashboard/components/AddNewCalculator.js");
 /* harmony import */ var _calculatorSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../calculatorSlice */ "./assets/admin/src/dashboard/calculatorSlice.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -6668,7 +6680,7 @@ __webpack_require__.r(__webpack_exports__);
 function EditCalculator() {
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)(),
     id = _useParams.id;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
       'action': 'ascode_load_calculator_get_info_action',
@@ -6676,10 +6688,10 @@ function EditCalculator() {
       '_ajax_nonce': ascodeWooCalculatorDashboard.nonce
     };
     jQuery.post(ajaxurl, data, function (response) {
-      dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleUpdateCalculator)(response.data));
+      dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleUpdateCalculator)([response.data, id]));
     });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNewCalculator__WEBPACK_IMPORTED_MODULE_1__["default"], {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNewCalculator__WEBPACK_IMPORTED_MODULE_2__["default"], {});
 }
 
 /***/ }),
