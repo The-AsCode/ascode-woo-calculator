@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { handleCalculatorNameChange, handleDescriptionChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection } from "../calculatorSlice";
+import { string } from '../common/text';
 
 export default function AddNewCalculator() {
     const navigate = useNavigate();
@@ -42,10 +43,10 @@ export default function AddNewCalculator() {
                     <div className='mt-3'>
                         <div className="flex justify-between">
                             <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
-                                Name
+                                {string.fromString.name}
                             </label>
                             <span className="text-sm leading-6 text-gray-500" id="name-optional">
-                                Required
+                                {string.fromString.requiredText}
                             </span>
                         </div>
                         <div className="mt-2">
@@ -54,7 +55,7 @@ export default function AddNewCalculator() {
                                 name="name"
                                 id="name"
                                 className="form-input block w-full rounded-md border-0 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="Put calculator name here"
+                                placeholder={string.fromString.namePlaceHolder}
                                 aria-describedby=""
                                 value={calculatorName}
                                 onChange={(e) => dispatch(handleCalculatorNameChange(e.target.value))}
@@ -64,10 +65,10 @@ export default function AddNewCalculator() {
                     <div className='mt-4'>
                         <div className="flex justify-between">
                             <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
-                                Description
+                                {string.fromString.calculatorDescription}
                             </label>
                             <span className="text-sm leading-6 text-gray-500" id="email-optional">
-                                Optional
+                                {string.fromString.optionalText}
                             </span>
                         </div>
                         <div className="mt-2">
@@ -76,7 +77,7 @@ export default function AddNewCalculator() {
                                 name="description"
                                 id="description"
                                 className="block w-full rounded-md border-0 p-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="you can write something"
+                                placeholder={string.fromString.descriptionPlaceHolder}
                                 aria-describedby=""
                                 value={calculatorDescription}
                                 onChange={(e) => dispatch(handleDescriptionChange(e.target.value))}
@@ -86,7 +87,7 @@ export default function AddNewCalculator() {
                     <div className='mt-4'>
                         <div className="flex justify-between">
                             <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
-                                Fields
+                                {string.fromString.calculatorFields}
                             </label>
                         </div>
                         <div className="mt-2">
@@ -141,7 +142,7 @@ export default function AddNewCalculator() {
                                     dispatch(handleAddSection(uniqueId))
                                 }}
                                 className="rounded-md bg-indigo-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >Add Field</button>
+                            >{string.fromString.addFiledButton}</button>
                         </div>
                     </div>
                 </form>
