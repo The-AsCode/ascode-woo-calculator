@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from 'sweetalert2';
 import { handleCalculatorNameChange, handleDescriptionChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection } from "../calculatorSlice";
 import { string } from '../common/text';
 
@@ -25,9 +26,13 @@ export default function AddNewCalculator() {
 
         jQuery.post(ajaxurl, data, (response) => {
             if (response.success) {
+                Swal.fire(
+                    'Good Job!',
+                    response.data.message,
+                    'success'
+                )
                 navigate('/');
             }
-            alert(response.data.message);
         });
     }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { PencilIcon } from "@heroicons/react/24/outline";
-
+import Swal from 'sweetalert2';
 import { string } from '../common/text';
 
 const CalculatorList = () => {
@@ -28,10 +28,26 @@ const CalculatorList = () => {
       '_ajax_nonce': ascodeWooCalculatorDashboard.nonce,
     };
 
-    jQuery.post(ajaxurl, data, (response) => {
-      setData(response.data.data);
-      alert(response.data.message);
-    });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        jQuery.post(ajaxurl, data, (response) => {
+          setData(response.data.data);
+          Swal.fire(
+            'Deleted!',
+            'response.data.message',
+            'success'
+          )
+        });
+      }
+    })
   }
 
 
