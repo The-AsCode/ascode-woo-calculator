@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { __ } from '@wordpress/i18n';
 
 
 let initialState = {
@@ -16,8 +17,8 @@ let initialState = {
     ],
     edit: {
         calculatorId: '',
-        buttonText: 'Save Calculator',
-        page: 'Add New Calculator',
+        buttonText: __('Save Calculator', 'ascode-woo-calculator'),
+        page: __('Add New Calculator', 'ascode-woo-calculator'),
         action: 'ascode_save_calculator_info_action'
     }
 };
@@ -74,8 +75,8 @@ export const calculatorSlice = createSlice({
         },
         handleUpdateCalculator: (state, { payload }) => {
             state = Object.assign(state, payload[0]);
-            state.edit.page = 'Edit Calculator';
-            state.edit.buttonText = 'Update Calculator';
+            state.edit.page = __('Edit Calculator', 'ascode-woo-calculator');
+            state.edit.buttonText = __('Update Calculator','ascode-woo-calculator');
             state.edit.action = 'ascode_update_calculator_info_action';
             state.edit.calculatorId = payload[1];
         }
