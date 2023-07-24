@@ -8443,7 +8443,7 @@ var CalculatorList = function CalculatorList() {
       if (result.isConfirmed) {
         jQuery.post(ajaxurl, data, function (response) {
           setData(response.data.data);
-          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire('Deleted!', 'response.data.message', 'success');
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire('Deleted!', response.data.message, 'success');
         });
       }
     });

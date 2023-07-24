@@ -42,7 +42,7 @@ const CalculatorList = () => {
           setData(response.data.data);
           Swal.fire(
             'Deleted!',
-            'response.data.message',
+            response.data.message,
             'success'
           )
         });
