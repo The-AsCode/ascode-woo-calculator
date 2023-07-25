@@ -8256,7 +8256,8 @@ function AddNewCalculator() {
               value: calculatorName,
               onChange: function onChange(e) {
                 return dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleCalculatorNameChange)(e.target.value));
-              }
+              },
+              required: true
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -8320,16 +8321,17 @@ function AddNewCalculator() {
                         id: field.id,
                         value: e.target.value
                       }));
-                    }
+                    },
+                    required: true
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                   className: "relative mr-2",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
                     htmlFor: "value",
                     className: "absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900",
-                    children: ["Input ", index + 1, " value"]
+                    children: ["Input ", index + 1, " value in watt"]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                    type: "text",
+                    type: "number",
                     name: "value",
                     id: "value",
                     className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -8341,7 +8343,8 @@ function AddNewCalculator() {
                         id: field.id,
                         value: e.target.value
                       }));
-                    }
+                    },
+                    required: true
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                   onClick: function onClick(e) {

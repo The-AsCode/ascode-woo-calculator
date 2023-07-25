@@ -64,6 +64,7 @@ export default function AddNewCalculator() {
                                 aria-describedby=""
                                 value={calculatorName}
                                 onChange={(e) => dispatch(handleCalculatorNameChange(e.target.value))}
+                                required
                             />
                         </div>
                     </div>
@@ -113,6 +114,7 @@ export default function AddNewCalculator() {
                                             // placeholder={`Input ${index + 1} Name`}
                                             value={field.name}
                                             onChange={(e) => dispatch(handleNameChange({ id: field.id, value: e.target.value }))}
+                                            required
                                         />
                                     </div>
                                     <div className="relative mr-2">
@@ -120,16 +122,17 @@ export default function AddNewCalculator() {
                                             htmlFor="value"
                                             className="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900"
                                         >
-                                            Input {index + 1} value
+                                            Input {index + 1} value in watt
                                         </label>
                                         <input
-                                            type="text"
+                                            type="number"
                                             name="value"
                                             id="value"
                                             className="block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             // placeholder={`Input ${index + 1} Value`}
                                             value={field.value}
                                             onChange={(e) => dispatch(handleValueChange({ id: field.id, value: e.target.value }))}
+                                            required
                                         />
                                     </div>
                                     <button
