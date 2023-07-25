@@ -99,14 +99,13 @@ const CalculatorList = () => {
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                           <button
                             onClick={(e) => handleDeleteCalculator(row.id)}
-                            className="rounded-2xl bg-red-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className="rounded-3xl bg-red-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                           >
                             <TrashIcon className="h-5 w-5 text-red-500" />
                           </button>
                           <Link to={'/edit-calulator/' + row.id}>
                             <button
-                              // onClick={() => handleRemoveSection(index, event)}
-                              className="rounded-2xl bg-blue-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                              className="rounded-3xl ml-1 bg-blue-50 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                               <PencilIcon className="h-5 w-5 text-blue-500" />
                             </button>
