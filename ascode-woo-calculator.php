@@ -12,7 +12,7 @@
  * Text Domain:       ascode-woo-calculator
  * Domain Path:       /languages
  * @package     ReviewX
- * @author      Adnan <support@wpdeveloper.net>
+ * @author      Adnan <osmanhaider159@gmail.com>
  * @copyright   Copyright (C) 2023 Osman Haider Adnan. All rights reserved.
  * @license     GPLv3 or later
  * @since       1.0.0
@@ -104,8 +104,8 @@ final class AsCode_Woo_Calculator
     {
         if (is_admin()) {
             new AsCode\WooCalculator\Admin();
-        } 
-        
+        }
+
         new AsCode\WooCalculator\Front();
     }
 }
