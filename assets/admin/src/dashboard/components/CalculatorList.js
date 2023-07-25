@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TrashIcon } from "@heroicons/react/24/outline";
-import { PencilIcon } from "@heroicons/react/24/outline";
+import { PencilIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import Swal from 'sweetalert2';
 import { string } from '../common/text';
+
 
 const CalculatorList = () => {
 
@@ -50,6 +51,10 @@ const CalculatorList = () => {
     })
   }
 
+  const handleCopy = (shortcode) => {
+    navigator.clipboard.writeText(shortcode);
+  }
+
 
   return (
     // <div className='m-2 p-2	border border-gray-600 rounded'>
@@ -84,7 +89,13 @@ const CalculatorList = () => {
                       <tr key={index}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{row.name}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{row.description}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{row.shortcode}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 flex">
+                          {row.shortcode}
+                          <DocumentDuplicateIcon
+                            className='h-5 w-4 ml-2'
+                            onClick={() => handleCopy(row.shortcode)}
+                          />
+                        </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                           <button
                             onClick={(e) => handleDeleteCalculator(row.id)}
