@@ -33,6 +33,7 @@ class FrontAjax
         $calculator_fields = $calculator_info['calculatorInfo'][0]['fields'];
 
         wp_send_json_success($calculator_fields);
+        wp_die();
     }
 
     /**

@@ -1,19 +1,21 @@
 <?php
 
-/*
+/** 
  * Plugin Name:       AsCode Woo Calculator
- * Plugin URI:        
- * Description:       A plugin for build calculator for WooCommerce product.
+ * Plugin URI:        https://osmanhaideradnan.wordpress.com/
+ * Description:       A plugin for build and show calculator for WooCommerce product.
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Osman Haider Adnan
- * Author URI:        
- * License:           GPL v2 or later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Update URI:        
+ * Author URI:        https://osmanhaideradnan.wordpress.com/
  * Text Domain:       ascode-woo-calculator
  * Domain Path:       /languages
+ * @package     ReviewX
+ * @author      Adnan <support@wpdeveloper.net>
+ * @copyright   Copyright (C) 2023 Osman Haider Adnan. All rights reserved.
+ * @license     GPLv3 or later
+ * @since       1.0.0
  */
 
 
