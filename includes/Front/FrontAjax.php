@@ -12,7 +12,6 @@ class FrontAjax
 
         add_action('wp_ajax_ascode_preview_product_action', [$this, 'ascode_preview_product_action']);
         add_action('wp_ajax_ascode_preview_product_action', [$this, 'ascode_preview_product_action']);
-
     }
 
     /**
@@ -41,14 +40,16 @@ class FrontAjax
      *
      * @return void
      */
-    public function ascode_preview_product_action(){
+    public function ascode_preview_product_action()
+    {
         check_ajax_referer('ascode-calculator-show-calculator');
 
         global $wpdb;
         $total_value = sanitize_text_field($_POST['total_value']);
         $metaKey = 'woo_calculator';
 
-        $query = $wpdb->prepare("
+        $query = $wpdb->prepare(
+            "
             SELECT p.ID
             FROM {$wpdb->posts} AS p
             JOIN {$wpdb->postmeta} AS pm ON p.ID = pm.post_id
@@ -59,8 +60,8 @@ class FrontAjax
             AND CAST(pm.meta_value AS SIGNED) < %d
             ",
             $metaKey,
-            $total_value - 10,
-            $total_value + 10
+            $total_value - 200,
+            $total_value + 200
         );
         $results = $wpdb->get_results($query, ARRAY_A);
         $product_id = (int) $results[0]['ID'];
@@ -75,7 +76,7 @@ class FrontAjax
             'add_to_cart'   => $product->add_to_cart_url(),
             'currency_code' => get_option('woocommerce_currency')
         ];
-        wp_send_json_success( $product_view_data, true  );
+        wp_send_json_success($product_view_data, true);
         wp_die();
     }
 }
