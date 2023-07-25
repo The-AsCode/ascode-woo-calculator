@@ -21,7 +21,7 @@ Customer can calculate load easily and they will get a suggestion of similer por
 
 Now, let’s see a quick overview of our Load calculator plugin:
 
-https://youtu.be/631xOZmr_A0
+https://youtu.be/6x1BzfZd8jg
 
 
 
