@@ -6,18 +6,18 @@ class Front
 {
     public function __construct()
     {
-        $this->load_front_files();
+        $this->load_frontend_components();
     }
 
     /**
-     * Load front files
+     * Load frontend components (Enqueue, Shortcode, and FrontAjax).
      *
      * @return void
      */
-    public function load_front_files()
+    public function load_frontend_components()
     {
-        new Front\Enqueue();
-        new Front\Shortcode();
-        new Front\FrontAjax();
+        new Front\Enqueue(); // Enqueue styles and scripts for the frontend.
+        new Front\Shortcode(); // Define custom shortcodes for the frontend.
+        new Front\FrontAjax(); // Handle frontend-related AJAX actions.
     }
 }

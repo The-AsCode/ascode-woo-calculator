@@ -3,12 +3,12 @@
 namespace AsCode\WooCalculator\Admin;
 
 /**
- * The menu handelar class
+ * The menu handler class
  */
 class Menu
 {
 
-    function __construct()
+    public function __construct()
     {
         add_action('admin_menu', [$this, 'admin_menu']);
     }
@@ -21,12 +21,16 @@ class Menu
             'manage_options',
             'ascode-woo-calculator',
             [$this, 'plugin_page'],
-            'dashicons-calculator',
+            'dashicons-calculator' // Icon for the menu item
         );
     }
 
+    /**
+     * Callback function to display the plugin page.
+     */
     public function plugin_page()
     {
+        // Load the view from the plugin directory.
         require_once ASCODE_WOO_CALCULATOR_DIR_PATH . '/views/admin-view.php';
     }
 }
