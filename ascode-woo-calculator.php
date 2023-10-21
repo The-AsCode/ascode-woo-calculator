@@ -11,7 +11,7 @@
  * Author URI:        https://osmanhaideradnan.wordpress.com/
  * Text Domain:       ascode-woo-calculator
  * Domain Path:       /languages
- * @package     ReviewX
+ * @package     AsCode Woo Calculator
  * @author      Adnan <osmanhaider159@gmail.com>
  * @copyright   Copyright (C) 2023 Osman Haider Adnan. All rights reserved.
  * @license     GPLv3 or later
