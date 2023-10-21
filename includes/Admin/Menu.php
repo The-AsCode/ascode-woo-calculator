@@ -27,6 +27,6 @@ class Menu
 
     public function plugin_page()
     {
-        echo '<div id="ascode-woo-calculator"></div>';
+        require_once ASCODE_WOO_CALCULATOR_DIR_PATH . '/views/admin-view.php';
     }
 }
