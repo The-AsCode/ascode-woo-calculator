@@ -43,7 +43,6 @@ class FrontAjax
         global $wpdb;
         $total_value = absint($_POST['total_value']); // Ensure the total value is a positive integer
         $metaKey = 'woo_calculator';
-
         $query = $wpdb->prepare(
             "
             SELECT p.ID
@@ -52,13 +51,19 @@ class FrontAjax
             WHERE p.post_type = 'product'
             AND p.post_status = 'publish'
             AND pm.meta_key = %s
-            AND CAST(pm.meta_value AS SIGNED) BETWEEN %d AND %d
+            AND (
+                CAST(pm.meta_value AS SIGNED) >= %d
+            )
+            ORDER BY CAST(pm.meta_value AS SIGNED) ASC
+            LIMIT 1
             ",
             $metaKey,
-            $total_value - 200,
-            $total_value + 200
-        );
+            $total_value
+        );        
+        
         $results = $wpdb->get_results($query, ARRAY_A);
+
+        error_log(print_r($results, true));
 
         if (!empty($results)) {
             $product_id = (int) $results[0]['ID'];
@@ -67,6 +72,7 @@ class FrontAjax
             $product_view_data = [
                 'product_image' => esc_url(wp_get_attachment_image_src($product->get_image_id(), 'full')[0]),
                 'product_name'  => esc_html($product->get_name()),
+                'product_url'   => esc_url(get_permalink($product_id)),
                 'product_price' => esc_html($product->get_price()),
                 'add_to_cart'   => esc_url($product->add_to_cart_url()),
                 'currency_code' => esc_html(get_option('woocommerce_currency'))

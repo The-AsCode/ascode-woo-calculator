@@ -43,12 +43,11 @@ export default function SingleCalculator() {
       }
     });
 
-
   }
 
   return (
       <div className='justify-between flex w-full'>
-        <div className="px-4 sm:px-6 lg:px-8">
+        <div className="px-4 sm:px-6 lg:px-8 w-[70%]">
           <div className="flow-root">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -101,19 +100,27 @@ export default function SingleCalculator() {
             </div>
           </div>
         </div>
-        <div className='view-product justify-center'>
-          { viewProduct &&
+        <div className='view-product justify-center w-[30%]'>
+          { 
+            !viewProduct ?
+              (
+                  <div className='text-center border rounded p-4'>
+                    <p className='text-xl font-medium'> Product will show here!</p>
+                  </div>
+              ) :
+              viewProduct && !viewProduct.message ?
               <div className='border rounded p-4'>
                 <img src={viewProduct.product_image} alt={viewProduct.product_name}/>
                 <div className='flex justify-between p-3'>
-                  <h2>{viewProduct.product_name}</h2>
+                  <a href={viewProduct.product_url}>{viewProduct.product_name}</a>
                   <p>{viewProduct.product_price + ' ' + viewProduct.currency_code}</p>
                 </div>
                 <a href={viewProduct.add_to_cart} className="button">
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-3 rounded">
                   Add to Cart
-                  </button>
                 </a>
+              </div> :
+              <div className='border rounded p-4'>
+                <p>No Product Found</p>
               </div>
           }
         </div>
