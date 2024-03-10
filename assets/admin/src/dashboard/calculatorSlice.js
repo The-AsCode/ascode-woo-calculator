@@ -15,6 +15,9 @@ let initialState = {
             value: ''
         }
     ],
+    settings: {
+        addToCart: false,
+    },
     edit: {
         calculatorId: '',
         buttonText: __('Save Calculator', 'ascode-woo-calculator'),
@@ -73,6 +76,9 @@ export const calculatorSlice = createSlice({
             }
             state.fields = state.fields.filter(item => item.id !== index.payload);
         },
+        handleAddToCartChange: (state, e) => {
+            state.settings.addToCart = e.payload;
+        },
         handleUpdateCalculator: (state, { payload }) => {
             state = Object.assign(state, payload[0]);
             state.edit.page = __('Edit Calculator', 'ascode-woo-calculator');
@@ -84,5 +90,16 @@ export const calculatorSlice = createSlice({
 
 })
 
-export const { handleCalculatorNameChange, handleDescriptionChange, handleTypeChange, handleNameChange, handleValueChange, handleAddSection, handleRemoveSection, handleUpdateCalculator } = calculatorSlice.actions;
+export const { 
+    handleCalculatorNameChange, 
+    handleDescriptionChange, 
+    handleTypeChange, 
+    handleNameChange, 
+    handleValueChange, 
+    handleAddSection, 
+    handleRemoveSection,
+    handleAddToCartChange,
+    handleUpdateCalculator 
+} = calculatorSlice.actions;
+
 export default calculatorSlice.reducer;

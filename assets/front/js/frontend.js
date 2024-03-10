@@ -72,6 +72,10 @@ function SingleCalculator() {
     _useState6 = _slicedToArray(_useState5, 2),
     viewProduct = _useState6[0],
     setViewProduct = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    settings = _useState8[0],
+    setSettings = _useState8[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
       'action': 'ascode_load_calculator_preview_info_action',
@@ -79,7 +83,8 @@ function SingleCalculator() {
       'calculator_id': document.getElementById('ascode_calculator_view').getAttribute('data-value')
     };
     jQuery.post(output_ajax_object.ajax_url, data, function (response) {
-      setData(response.data);
+      setSettings(response.data.settings);
+      setData(response.data.fields);
     });
   }, []);
   var handleInputIncrement = function handleInputIncrement(index, value, name) {
@@ -195,7 +200,7 @@ function SingleCalculator() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             children: viewProduct.product_price + ' ' + viewProduct.currency_code
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        }), settings && settings.addToCart === 'true' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
           href: viewProduct.add_to_cart,
           className: "button",
           children: "Add to Cart"

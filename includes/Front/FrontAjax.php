@@ -27,7 +27,7 @@ class FrontAjax
         $single_calculator_data = get_post($single_calculator_id);
         $calculator_info = maybe_unserialize($single_calculator_data->post_content);
 
-        $calculator_fields = $calculator_info['calculatorInfo'][0]['fields'];
+        $calculator_fields = $calculator_info['calculatorInfo'][0];
 
         wp_send_json_success($calculator_fields);
         wp_die();

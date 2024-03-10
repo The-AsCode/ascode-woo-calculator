@@ -4,6 +4,7 @@ export default function SingleCalculator() {
   const [data, setData] = useState([]);
   const [dataSum, setDataSum] = useState(null);
   const [viewProduct, setViewProduct] = useState(null);
+  const [settings, setSettings] = useState(null);
 
   useEffect(() => {
     let data = {
@@ -13,7 +14,8 @@ export default function SingleCalculator() {
     };
 
     jQuery.post(output_ajax_object.ajax_url, data, (response) => {
-      setData(response.data);
+      setSettings(response.data.settings);
+      setData(response.data.fields);
     });
 
   }, []);
@@ -115,9 +117,13 @@ export default function SingleCalculator() {
                   <a href={viewProduct.product_url}>{viewProduct.product_name}</a>
                   <p>{viewProduct.product_price + ' ' + viewProduct.currency_code}</p>
                 </div>
-                <a href={viewProduct.add_to_cart} className="button">
-                  Add to Cart
-                </a>
+                {
+                  settings && settings.addToCart === 'true' && (
+                    <a href={viewProduct.add_to_cart} className="button">
+                      Add to Cart
+                    </a>
+                  )
+                }
               </div> :
               <div className='border rounded p-4'>
                 <p>No Product Found</p>
