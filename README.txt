@@ -59,6 +59,14 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+= 1.1.0 – 11th March 2024
+* New: Settings for add to cart button.
+* New: Go to single product page added.
+* Fix: Exact product not found issue fix.
+* Fix: Undefine product issue fix.
+
+= 1.0.1 – 18th November 2023
+* Initial stable release
 
 = 1.0.0-beta - 15-04-2020 =
 * Initial beta release

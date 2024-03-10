@@ -4,7 +4,7 @@
  * Plugin Name:       AsCode Woo Calculator
  * Plugin URI:        https://osmanhaideradnan.wordpress.com/
  * Description:       A plugin for building and displaying a calculator for WooCommerce products.
- * Version:           1.0.1
+ * Version:           1.1.0
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Osman Haider Adnan
