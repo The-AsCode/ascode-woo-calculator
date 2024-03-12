@@ -197,8 +197,8 @@ function SingleCalculator() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: viewProduct.product_url,
             children: viewProduct.product_name
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            children: viewProduct.product_price + ' ' + viewProduct.currency_code
+          }), settings && settings.viewPrice === 'true' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            children: viewProduct.product_price
           })]
         }), settings && settings.addToCart === 'true' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
           href: viewProduct.add_to_cart,

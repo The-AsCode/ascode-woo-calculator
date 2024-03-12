@@ -11,7 +11,8 @@ import {
     handleValueChange, 
     handleAddSection, 
     handleRemoveSection,
-    handleAddToCartChange
+    handleAddToCartChange,
+    handleViewPriceChange
 } from "../calculatorSlice";
 
 import { string } from '../common/text';
@@ -24,8 +25,16 @@ export default function AddNewCalculator() {
     const navigate = useNavigate();
     const uniqueId = Date.now();
     const addToCartValue = useSelector(state => state.calculator.settings.addToCart);
-    const addToCartValueString  = addToCartValue.toString();
+    const viewPriceValue = useSelector(state => state.calculator.settings.viewPrice);
+
+    const addToCartValueString  = addToCartValue ? addToCartValue.toString() : 'false';
+    const viewPriceValueString  = viewPriceValue ? viewPriceValue.toString() : 'false';
+
+
     let addToCart = JSON.parse(addToCartValueString.toLowerCase());
+    let viewPrice = JSON.parse(viewPriceValueString.toLowerCase());
+
+
     const edit = useSelector(state => state.calculator.edit);
     const calculatorName = useSelector(state => state.calculator.calculator.calculatorName);
     const calculatorDescription = useSelector(state => state.calculator.calculator.description);
@@ -195,8 +204,32 @@ export default function AddNewCalculator() {
                                     />
                                 </Switch>
                                 <div className='ml-8'>
-                                    <span className="text-base font-medium text-gray-900">Add to cart button</span>
+                                    <span className="text-base font-medium text-gray-900">Show Add to cart button</span>
                                     <p className='text-sm'>Show add to cart button in suggested product</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='p-4'>
+                            <div className='flex items-center border-b pb-2'>
+                                <Switch
+                                    checked={viewPrice}
+                                    onChange={() => dispatch(handleViewPriceChange(!viewPrice))}
+                                    className={classNames(
+                                        viewPrice ? 'bg-indigo-600' : 'bg-gray-200',
+                                        'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2'
+                                    )}
+                                    >
+                                    <span
+                                        aria-hidden="true"
+                                        className={classNames(
+                                        viewPrice ? 'translate-x-5' : 'translate-x-0',
+                                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
+                                        )}
+                                    />
+                                </Switch>
+                                <div className='ml-8'>
+                                    <span className="text-base font-medium text-gray-900">Show Price</span>
+                                    <p className='text-sm'>Show price in suggested product.</p>
                                 </div>
                             </div>
                         </div>

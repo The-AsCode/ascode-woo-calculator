@@ -8014,7 +8014,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   handleRemoveSection: () => (/* binding */ handleRemoveSection),
 /* harmony export */   handleTypeChange: () => (/* binding */ handleTypeChange),
 /* harmony export */   handleUpdateCalculator: () => (/* binding */ handleUpdateCalculator),
-/* harmony export */   handleValueChange: () => (/* binding */ handleValueChange)
+/* harmony export */   handleValueChange: () => (/* binding */ handleValueChange),
+/* harmony export */   handleViewPriceChange: () => (/* binding */ handleViewPriceChange)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
@@ -8038,7 +8039,8 @@ var initialState = {
     value: ''
   }],
   settings: {
-    addToCart: false
+    addToCart: false,
+    viewPrice: false
   },
   edit: {
     calculatorId: '',
@@ -8102,6 +8104,9 @@ var calculatorSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSli
     handleAddToCartChange: function handleAddToCartChange(state, e) {
       state.settings.addToCart = e.payload;
     },
+    handleViewPriceChange: function handleViewPriceChange(state, e) {
+      state.settings.viewPrice = e.payload;
+    },
     handleUpdateCalculator: function handleUpdateCalculator(state, _ref2) {
       var payload = _ref2.payload;
       state = Object.assign(state, payload[0]);
@@ -8121,6 +8126,7 @@ var _calculatorSlice$acti = calculatorSlice.actions,
   handleAddSection = _calculatorSlice$acti.handleAddSection,
   handleRemoveSection = _calculatorSlice$acti.handleRemoveSection,
   handleAddToCartChange = _calculatorSlice$acti.handleAddToCartChange,
+  handleViewPriceChange = _calculatorSlice$acti.handleViewPriceChange,
   handleUpdateCalculator = _calculatorSlice$acti.handleUpdateCalculator;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calculatorSlice.reducer);
@@ -8208,8 +8214,13 @@ function AddNewCalculator() {
   var addToCartValue = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.calculator.settings.addToCart;
   });
-  var addToCartValueString = addToCartValue.toString();
+  var viewPriceValue = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.calculator.settings.viewPrice;
+  });
+  var addToCartValueString = addToCartValue ? addToCartValue.toString() : 'false';
+  var viewPriceValueString = viewPriceValue ? viewPriceValue.toString() : 'false';
   var addToCart = JSON.parse(addToCartValueString.toLowerCase());
+  var viewPrice = JSON.parse(viewPriceValueString.toLowerCase());
   var edit = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.calculator.edit;
   });
@@ -8413,10 +8424,35 @@ function AddNewCalculator() {
                 className: "ml-8",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
                   className: "text-base font-medium text-gray-900",
-                  children: "Add to cart button"
+                  children: "Show Add to cart button"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
                   className: "text-sm",
                   children: "Show add to cart button in suggested product"
+                })]
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "p-4",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "flex items-center border-b pb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_8__.Switch, {
+                checked: viewPrice,
+                onChange: function onChange() {
+                  return dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleViewPriceChange)(!viewPrice));
+                },
+                className: classNames(viewPrice ? 'bg-indigo-600' : 'bg-gray-200', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2'),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                  "aria-hidden": "true",
+                  className: classNames(viewPrice ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out')
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "ml-8",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                  className: "text-base font-medium text-gray-900",
+                  children: "Show Price"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                  className: "text-sm",
+                  children: "Show price in suggested product."
                 })]
               })]
             })

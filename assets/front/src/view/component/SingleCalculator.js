@@ -113,9 +113,14 @@ export default function SingleCalculator() {
               viewProduct && !viewProduct.message ?
               <div className='border rounded p-4'>
                 <img src={viewProduct.product_image} alt={viewProduct.product_name}/>
+                
                 <div className='flex justify-between p-3'>
                   <a href={viewProduct.product_url}>{viewProduct.product_name}</a>
-                  <p>{viewProduct.product_price + ' ' + viewProduct.currency_code}</p>
+                  {
+                    settings && settings.viewPrice === 'true' && (
+                      <span>{viewProduct.product_price}</span>
+                    )
+                  }
                 </div>
                 {
                   settings && settings.addToCart === 'true' && (
