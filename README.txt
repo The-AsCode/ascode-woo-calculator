@@ -1,7 +1,7 @@
-=== AsCode Woo Calculator - Build Load Calculator for Eletronics Woocommerce Shop & Help Customer to Suggest Product ===
+=== AsCode Woo Load Calculator - Build Load Calculator for Eletronics Woocommerce Shop & Help Customer to Suggest Product ===
 Contributors: adnan159
 Donate link: https://osmanhaideradnan.wordpress.com/
-Tags: load calculation, woocommerce, product suggestion, eletronics load, energy supply, energy
+Tags: woocommerce, eletronics, load calculation, 
 Requires at least: 4.4
 Tested up to: 6.3.2
 WC requires at least: 3.1
@@ -35,6 +35,8 @@ https://youtu.be/6x1BzfZd8jg
 
 **[Product Suggestion:]**  Customer can get product suggestion based on customers calculation.
 
+**[Enable/Disable price and Add to cart:]**  User can enable or disable Add to cart button and price.
+
 
 == Installation ==
 
@@ -59,6 +61,9 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+= 1.1.2 – 13th March 2024
+* Fix: Calculator saved with empty name
+
 = 1.1.1 – 12th March 2024
 * New: Settings for show price.
 * Fix: Few minor issue.

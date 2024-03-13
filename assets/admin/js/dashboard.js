@@ -8462,6 +8462,7 @@ function AddNewCalculator() {
         className: "border mt-4"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         onClick: handleSave,
+        disabled: !calculatorName.trim(),
         className: "rounded-md mt-4 bg-green-600 mt-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
         children: edit.buttonText
       })]
