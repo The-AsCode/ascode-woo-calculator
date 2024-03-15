@@ -8262,22 +8262,15 @@ function AddNewCalculator() {
           children: edit.page
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
-        className: "border p-5 rounded flex devide-x",
+        className: "border p-5 rounded flex flex-col sm:flex-row divide-y sm:divide-x",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "w-[60%] p-4",
+          className: "w-full sm:w-[60%] p-4",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "mt-3",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "flex justify-between",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                htmlFor: "name",
-                className: "block text-sm font-medium leading-6 text-gray-900",
-                children: _common_text__WEBPACK_IMPORTED_MODULE_4__.string.fromString.name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "text-sm leading-6 text-gray-500",
-                id: "name-optional",
-                children: _common_text__WEBPACK_IMPORTED_MODULE_4__.string.fromString.requiredText
-              })]
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              htmlFor: "name",
+              className: "block text-sm font-medium leading-6 text-gray-900",
+              children: _common_text__WEBPACK_IMPORTED_MODULE_4__.string.fromString.name
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               className: "mt-2",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
@@ -8296,17 +8289,10 @@ function AddNewCalculator() {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "mt-4",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "flex justify-between",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                htmlFor: "description",
-                className: "block text-sm font-medium leading-6 text-gray-900",
-                children: _common_text__WEBPACK_IMPORTED_MODULE_4__.string.fromString.calculatorDescription
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "text-sm leading-6 text-gray-500",
-                id: "email-optional",
-                children: _common_text__WEBPACK_IMPORTED_MODULE_4__.string.fromString.optionalText
-              })]
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              htmlFor: "description",
+              className: "block text-sm font-medium leading-6 text-gray-900",
+              children: _common_text__WEBPACK_IMPORTED_MODULE_4__.string.fromString.calculatorDescription
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               className: "mt-2",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
@@ -8324,62 +8310,41 @@ function AddNewCalculator() {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "mt-4",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "flex justify-between",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                htmlFor: "description",
-                className: "block text-sm font-medium leading-6 text-gray-900",
-                children: _common_text__WEBPACK_IMPORTED_MODULE_4__.string.fromString.calculatorFields
-              })
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              htmlFor: "description",
+              className: "block text-sm font-medium leading-6 text-gray-900",
+              children: _common_text__WEBPACK_IMPORTED_MODULE_4__.string.fromString.calculatorFields
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "mt-2",
               children: [fields.map(function (field, index) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                   className: "flex mt-4",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                    className: "relative mr-2",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
-                      htmlFor: "name",
-                      className: "absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900",
-                      children: ["Input ", index + 1, " name"]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                      type: "text",
-                      name: "name",
-                      id: "name",
-                      className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      // placeholder={`Input ${index + 1} Name`}
-                      ,
-                      value: field.name,
-                      onChange: function onChange(e) {
-                        return dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleNameChange)({
-                          id: field.id,
-                          value: e.target.value
-                        }));
-                      },
-                      required: true
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                    className: "relative mr-2",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
-                      htmlFor: "value",
-                      className: "absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900",
-                      children: ["Input ", index + 1, " value in watt"]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                      type: "number",
-                      name: "value",
-                      id: "value",
-                      className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      // placeholder={`Input ${index + 1} Value`}
-                      ,
-                      value: field.value,
-                      onChange: function onChange(e) {
-                        return dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleValueChange)({
-                          id: field.id,
-                          value: e.target.value
-                        }));
-                      },
-                      required: true
-                    })]
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    type: "text",
+                    name: "name",
+                    id: "name",
+                    className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 mr-2",
+                    value: field.name,
+                    onChange: function onChange(e) {
+                      return dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleNameChange)({
+                        id: field.id,
+                        value: e.target.value
+                      }));
+                    },
+                    required: true
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    type: "number",
+                    name: "value",
+                    id: "value",
+                    className: "block w-full rounded-md border-0 py-1.5 h-11 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 mr-2",
+                    value: field.value,
+                    onChange: function onChange(e) {
+                      return dispatch((0,_calculatorSlice__WEBPACK_IMPORTED_MODULE_3__.handleValueChange)({
+                        id: field.id,
+                        value: e.target.value
+                      }));
+                    },
+                    required: true
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                     onClick: function onClick(e) {
                       e.preventDefault();
@@ -8402,7 +8367,7 @@ function AddNewCalculator() {
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "w-[40%] pl-4 border-l",
+          className: "w-full sm:w-[40%] pl-4 border-l",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h5", {
             className: "text-2xl pb-2 border-b-2 font-bold leading-7 text-gray-900 sm:truncate sm:text-xl sm:tracking-tight",
             children: "Settings"
