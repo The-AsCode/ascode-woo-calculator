@@ -1,5 +1,5 @@
 === AsCode Woo Load Calculator - Build Load Calculator for Eletronics Woocommerce Shop & Help Customer to Suggest Product ===
-Contributors: adnan159
+Contributors: adnan159, @tahirajannat
 Donate link: https://osmanhaideradnan.wordpress.com/
 Tags: woocommerce, eletronics, load calculation, 
 Requires at least: 4.4
@@ -61,6 +61,9 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+= 1.1.4 – 26th March 2024 =
+* Fix: Calculator mobile responsive issue fix
+
 = 1.1.2 – 13th March 2024 =
 * Fix: Calculator saved with empty name
 
