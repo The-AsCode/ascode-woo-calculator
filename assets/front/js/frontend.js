@@ -78,9 +78,9 @@ function SingleCalculator() {
     setSettings = _useState8[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var data = {
-      'action': 'ascode_load_calculator_preview_info_action',
-      '_ajax_nonce': output_ajax_object.ajax_nonce,
-      'calculator_id': document.getElementById('ascode_calculator_view').getAttribute('data-value')
+      action: 'ascode_load_calculator_preview_info_action',
+      _ajax_nonce: output_ajax_object.ajax_nonce,
+      calculator_id: document.getElementById('ascode_calculator_view').getAttribute('data-value')
     };
     jQuery.post(output_ajax_object.ajax_url, data, function (response) {
       setSettings(response.data.settings);
@@ -97,9 +97,9 @@ function SingleCalculator() {
   var handleSreachClick = function handleSreachClick(e) {
     e.preventDefault();
     var data = {
-      'action': 'ascode_preview_product_action',
-      '_ajax_nonce': output_ajax_object.ajax_nonce,
-      'total_value': Object.values(dataSum).reduce(function (a, b) {
+      action: 'ascode_preview_product_action',
+      _ajax_nonce: output_ajax_object.ajax_nonce,
+      total_value: Object.values(dataSum).reduce(function (a, b) {
         return a + b;
       }, 0)
     };
@@ -110,58 +110,62 @@ function SingleCalculator() {
     });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "justify-between flex w-full",
+    className: "justify-between sm:flex w-full",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "px-4 sm:px-6 lg:px-8 w-[70%]",
+      className: "px-4 sm:px-6 lg:px-8 py-6 sm:py-0 w-full sm:w-[70%]",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "flow-root",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-              className: "table-fixed min-w-full divide-y border rounded",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                    scope: "col",
-                    className: "whitespace-nowrap w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900",
-                    children: "Load Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                    scope: "col",
-                    className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900",
-                    children: "Load Value"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                    scope: "col",
-                    className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semi-bold text-gray-900",
-                    children: "Quantity"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-                className: "divide-y divide-gray-200",
-                children: data.map(function (row, index) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                      className: "whitespace-nowrap p-4 text-sm font-medium text-gray-700",
-                      children: row.name
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-                      className: "whitespace-nowrap p-4 text-sm text-gray-500 text-center",
-                      children: [row.value, " Watt"]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                      className: "whitespace-nowrap text-sm text-gray-500",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                        className: "w-24 rounded",
-                        type: "number",
-                        min: 0,
-                        onChange: function onChange(e) {
-                          e.preventDefault();
-                          handleInputIncrement(index, parseInt(e.target.value), row);
-                        }
-                      })
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "max-h-[21rem] sm:max-h-full overflow-y-auto",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
+                className: "table-fixed min-w-full divide-y border rounded border-gray-200",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+                  className: " sticky top-0 bg-gray-100 z-50",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                      scope: "col",
+                      className: "whitespace-nowrap w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900",
+                      children: "Load Name"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                      scope: "col",
+                      className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900",
+                      children: "Load Value"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                      scope: "col",
+                      className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semi-bold text-gray-900",
+                      children: "Quantity"
                     })]
-                  }, index);
-                })
-              })]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
+                  className: "divide-y divide-gray-200 ",
+                  children: data.map(function (row, index) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                        className: "whitespace-nowrap p-4 text-sm font-medium text-gray-700",
+                        children: row.name
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+                        className: "whitespace-nowrap p-4 text-sm text-gray-500 text-center",
+                        children: [row.value, " Watt"]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                        className: "whitespace-nowrap p-2 text-sm text-gray-500",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                          className: "w-24 rounded",
+                          type: "number",
+                          min: 0,
+                          onChange: function onChange(e) {
+                            e.preventDefault();
+                            handleInputIncrement(index, parseInt(e.target.value), row);
+                          }
+                        })
+                      })]
+                    }, index);
+                  })
+                })]
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "justify-between flex whitespace-nowrap p-4 text-sm font-medium text-gray-700 border rounded mt-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -180,12 +184,12 @@ function SingleCalculator() {
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "view-product justify-center w-[30%]",
+      className: "view-product justify-center w-full sm:w-[30%]",
       children: !viewProduct ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "text-center border rounded p-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
           className: "text-xl font-medium",
-          children: " Product will show here!"
+          children: [' ', "Product will show here!"]
         })
       }) : viewProduct && !viewProduct.message ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "border rounded p-4",

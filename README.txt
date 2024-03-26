@@ -61,23 +61,23 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
-= 1.1.2 – 13th March 2024
+= 1.1.2 – 13th March 2024 =
 * Fix: Calculator saved with empty name
 
-= 1.1.1 – 12th March 2024
+= 1.1.1 – 12th March 2024 =
 * New: Settings for show price.
 * Fix: Few minor issue.
 
-= 1.1.0 – 11th March 2024
+= 1.1.0 – 11th March 2024 =
 * New: Settings for add to cart button.
 * New: Go to single product page added.
 * Fix: Exact product not found issue.
 * Fix: Undefine product issue.
 
-= 1.0.1 – 18th November 2023
+= 1.0.1 – 18th November 2023 =
 * Initial stable release
 
-= 1.0.0-beta - 15-04-2020 =
+= 1.0.0-beta - 15th November 2023 =
 * Initial beta release
 
 == Upgrade Notice ==

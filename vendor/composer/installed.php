@@ -3,7 +3,7 @@
         'name' => 'adnan/ascode-woo-calculator',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'aea02ac78bca45d62be8d79de7d5eda7e4c71b06',
+        'reference' => 'd2ccf861600d87cf4ca7d4be30c7ea089aed9025',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'adnan/ascode-woo-calculator' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'aea02ac78bca45d62be8d79de7d5eda7e4c71b06',
+            'reference' => 'd2ccf861600d87cf4ca7d4be30c7ea089aed9025',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
