@@ -124,31 +124,31 @@ function SingleCalculator() {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
                 className: "table-fixed min-w-full divide-y border rounded border-gray-200",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-                  className: " sticky top-0 bg-gray-100 z-50",
+                  className: "!sticky !table-header-group !top-0 !bg-gray-100 !z-50",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
                       scope: "col",
-                      className: "whitespace-nowrap w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900",
+                      className: "whitespace-nowrap sm:w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900",
                       children: "Load Name"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
                       scope: "col",
-                      className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900",
+                      className: "whitespace-nowrap sm:w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900",
                       children: "Load Value"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
                       scope: "col",
-                      className: "whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semi-bold text-gray-900",
+                      className: "whitespace-nowrap sm:w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900",
                       children: "Quantity"
                     })]
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-                  className: "divide-y divide-gray-200 ",
+                  className: "!divide-y !divide-gray-200 ",
                   children: data.map(function (row, index) {
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
                         className: "whitespace-nowrap p-4 text-sm font-medium text-gray-700",
                         children: row.name
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-                        className: "whitespace-nowrap p-4 text-sm text-gray-500 text-center",
+                        className: "whitespace-nowrap p-4 text-sm text-gray-500 ",
                         children: [row.value, " Watt"]
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
                         className: "whitespace-nowrap p-2 text-sm text-gray-500",

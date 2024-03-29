@@ -55,35 +55,35 @@ export default function SingleCalculator() {
                         <div className='inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8'>
                             <div className='max-h-[21rem] sm:max-h-full overflow-y-auto'>
                                 <table className='table-fixed min-w-full divide-y border rounded border-gray-200'>
-                                    <thead className=' sticky top-0 bg-gray-100 z-50'>
+                                    <thead className='!sticky !table-header-group !top-0 !bg-gray-100 !z-50'>
                                         <tr>
                                             <th
                                                 scope='col'
-                                                className='whitespace-nowrap w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900'
+                                                className='whitespace-nowrap sm:w-1/2 p-3.5 text-left text-sm font-semibold text-gray-900'
                                             >
                                                 Load Name
                                             </th>
                                             <th
                                                 scope='col'
-                                                className='whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900'
+                                                className='whitespace-nowrap sm:w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900'
                                             >
                                                 Load Value
                                             </th>
                                             <th
                                                 scope='col'
-                                                className='whitespace-nowrap w-1/4 p-3.5 text-left text-sm font-semi-bold text-gray-900'
+                                                className='whitespace-nowrap sm:w-1/4 p-3.5 text-left text-sm font-semibold text-gray-900'
                                             >
                                                 Quantity
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody className='divide-y divide-gray-200 '>
+                                    <tbody className='!divide-y !divide-gray-200 '>
                                         {data.map((row, index) => (
                                             <tr key={index}>
                                                 <td className='whitespace-nowrap p-4 text-sm font-medium text-gray-700'>
                                                     {row.name}
                                                 </td>
-                                                <td className='whitespace-nowrap p-4 text-sm text-gray-500 text-center'>
+                                                <td className='whitespace-nowrap p-4 text-sm text-gray-500 '>
                                                     {row.value} Watt
                                                 </td>
                                                 <td className='whitespace-nowrap p-2 text-sm text-gray-500'>
