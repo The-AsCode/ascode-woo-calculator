@@ -6,7 +6,7 @@ Requires at least: 4.4
 Tested up to: 6.3.2
 WC requires at least: 3.1
 WC tested up to: 8.2.0
-Stable tag: 1.6.18
+Stable tag: 1.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -61,11 +61,15 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+= 1.1.5 – 3rd April 2024 =
+* Tweak: WordPress 6.5 compatibility checked.
+* Fix: Calculator mobile responsive css issue.
+
 = 1.1.4 – 26th March 2024 =
-* Fix: Calculator mobile responsive issue fix
+* Fix: Calculator mobile responsive issue fix.
 
 = 1.1.2 – 13th March 2024 =
-* Fix: Calculator saved with empty name
+* Fix: Calculator saved with empty name.
 
 = 1.1.1 – 12th March 2024 =
 * New: Settings for show price.
@@ -78,9 +82,9 @@ Yes, it will work with any standard WordPress theme.
 * Fix: Undefine product issue.
 
 = 1.0.1 – 18th November 2023 =
-* Initial stable release
+* Initial stable release.
 
 = 1.0.0-beta - 15th November 2023 =
-* Initial beta release
+* Initial beta release.
 
 == Upgrade Notice ==
