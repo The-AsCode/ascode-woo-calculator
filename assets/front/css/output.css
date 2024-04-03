@@ -510,8 +510,11 @@ video {
   position: sticky !important;
 }.top-0 {
   top: 0px;
+<<<<<<< HEAD
 }.\!top-0 {
   top: 0px !important;
+=======
+>>>>>>> 27304286d9ad725b1714029f8b0237c34e605a87
 }.z-50 {
   z-index: 50;
 }.\!z-50 {
@@ -694,9 +697,12 @@ video {
 }.bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+<<<<<<< HEAD
 }.\!bg-gray-100 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity)) !important;
+=======
+>>>>>>> 27304286d9ad725b1714029f8b0237c34e605a87
 }.p-2 {
   padding: 0.5rem;
 }.p-3 {
