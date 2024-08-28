@@ -1,12 +1,12 @@
-=== AsCode Woo Load Calculator - Build Load Calculator for Eletronics Woocommerce Shop & Help Customer to Suggest Product ===
+=== AsCode Load Calculator - Build Load Calculator for Eletronics Woocommerce Shop & Help Customer to Suggest Product ===
 Contributors: adnan159, @tahirajannat
 Donate link: https://osmanhaideradnan.wordpress.com/
-Tags: woocommerce, eletronics, load calculation, 
+Tags: woocommerce, generator, load-calculator, invertor-calculator 
 Requires at least: 4.4
 Tested up to: 6.3.2
 WC requires at least: 3.1
 WC tested up to: 8.2.0
-Stable tag: 1.4
+Stable tag: 1.1.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,7 +14,7 @@ Load Calculator for Eletronics Product. Build calculaton for customer to calcula
 
 == Description ==
 
-Now, you can build calculator with unlimited fields for your Energy supply shop to calculate energy and put short-code anywhere of your website. 
+Now, you can build calculator with unlimited fields for your Energy supply shop to calculate generator or invertor energy and put short-code anywhere of your website. 
 
 Customer can calculate load easily and they will get a suggestion of similer porduct.
 
@@ -61,6 +61,12 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+= 1.1.6 – 28th August 2024 =
+* Fix: Ajax request issue fix.
+* Add: Plugin icon added.
+* Tweak: WordPress 6.6.1 compatibility checked.
+* Tweak: WooCommerce 9.2.3 compatibility checked.
+
 = 1.1.5 – 3rd April 2024 =
 * Tweak: WordPress 6.5 compatibility checked.
 * Fix: Calculator mobile responsive css issue.

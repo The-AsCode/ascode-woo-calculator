@@ -4,13 +4,14 @@
  * Plugin Name:       AsCode Woo Load Calculator
  * Plugin URI:        https://osmanhaideradnan.wordpress.com/
  * Description:       A plugin for building and displaying a load calculator for eletronics products.
- * Version:           1.1.5
+ * Version:           1.1.6
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Osman Haider Adnan
  * Author URI:        https://osmanhaideradnan.wordpress.com/
  * Text Domain:       ascode-woo-calculator
  * Domain Path:       /languages
+ * Requires Plugins: woocommerce
  * @package     AsCode Woo Calculator
  * @author      Adnan <osmanhaider159@gmail.com>
  * @copyright   Copyright (C) 2023 Osman Haider Adnan. All rights reserved.
